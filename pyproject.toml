@@ -5,7 +5,7 @@ version = "0.0.0.1"
 license = {file = "LICENSE"}
 
 [project.urls]
-Repository = "https://github.com/zentrocdot/ComfyUI-Turtle_Graphics_Demos"
+Repository = "https://github.com/zentrocdot/ComfyUI-Turtle_Graphics_Demo"
 # Used by Comfy Registry https://comfyregistry.org
 
 [tool.comfy]
