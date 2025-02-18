@@ -1,0 +1,14 @@
+[project]
+name = "ComfyUI-Turtle_Graphics_Demos"
+description = "ComfyUI node for creating some Turtle Graphic demos."
+version = "0.0.0.1"
+license = {file = "LICENSE"}
+
+[project.urls]
+Repository = "https://github.com/zentrocdot/ComfyUI-Turtle_Graphics_Demos"
+# Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = "zentrocdot"
+DisplayName = "ComfyUI-Turtle_Graphics_Demos"
+Icon = "https://github.com/zentrocdot/ComfyUI-Turtle_Graphics_Demo/blob/main/images/logo.jpg"
