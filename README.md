@@ -22,3 +22,5 @@ of the screen where the graphics is drawn. By use of Jumpy this white background
 background of personal choice.
 
 If the background is exchanged by a black background it us also possible to remove the background.
+
+to be cont`d
