@@ -29,17 +29,21 @@ To be cont'd
 
 ### Square Node
 
+![image](https://github.com/user-attachments/assets/d6a191c8-2e52-4ad1-b571-9847834bc52f)
+
 to do ...
 
 ### Helix Node
+
+![image](https://github.com/user-attachments/assets/63fbd8ad-b69e-4745-a13e-b1ffb24ecb07)
 
 to do ...
 
 ### Circle Demo
 
+![image](https://github.com/user-attachments/assets/faeb7fbd-e715-4a50-8116-1e39b7846d8d)
 
-
-
+to do ...
 
 ### Spiral Node 
 
