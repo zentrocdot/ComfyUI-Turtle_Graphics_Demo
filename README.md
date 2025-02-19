@@ -1,4 +1,4 @@
-![ComfyUI_temp_otckr_00011_ (3)](https://github.com/user-attachments/assets/e4c0103d-8be4-426e-945a-b63716c1ec8d)# ComfyUI Turtle Graphics Demo
+# ComfyUI Turtle Graphics Demo
 
 ## Get Started
 
