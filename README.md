@@ -29,7 +29,8 @@ To be cont'd
 
 ### Spiral Node 
 
-Figure 1 shows the Turtle Graphics Spiral Demo node.  
+<p align="justify">Figure 1 shows the Turtle Graphics Spiral Demo 
+node. The settings for the graphics are fully parameterised.</p> 
 
 ![image](https://github.com/user-attachments/assets/9d315296-cd2f-439d-afae-aa740b8653b8)
 
