@@ -24,3 +24,8 @@ background of personal choice.
 If the background is exchanged by a black background it us also possible to remove the background.
 
 to be cont`d
+
+## Known Problems
+
+Under up to now unknown contions Tkinker is chrashing. This can be fixed by a new start of ComfyUI.
+
