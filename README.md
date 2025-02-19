@@ -27,15 +27,15 @@ To be cont'd
 
 ## Turtle Graphics Spiral Demo
 
+### Spiral Node 
+
 Figure 1 shows the Turtle Graphics Spiral Demo node.  
 
 ![image](https://github.com/user-attachments/assets/9d315296-cd2f-439d-afae-aa740b8653b8)
 
 *Figure 1: Turtle Graphics Spiral Demo*
 
-## Examples
-
-### Turtle Graphics Spiral Demo
+## Graphics Examples
 
   📎     | Column 1            | Column 2         |   Column 3  
 :----: | :-------------------------: | :-------------------------: | :----------------------------------:
