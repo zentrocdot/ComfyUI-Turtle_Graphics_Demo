@@ -23,7 +23,14 @@ background of personal choice.
 
 If the background is exchanged by a black background it us also possible to remove the background.
 
-to be cont`d
+To be cont'd
+
+##
+
+
+![image](https://github.com/user-attachments/assets/9d315296-cd2f-439d-afae-aa740b8653b8)
+
+
 
 ## Examples
 
