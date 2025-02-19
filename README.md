@@ -25,6 +25,13 @@ If the background is exchanged by a black background it us also possible to remo
 
 To be cont'd
 
+## Main Goals
+
+One goal is to use the node as Turtle Graphics demonstrator and to play with settings of a special demo.
+
+Another goal is it to provide graphics to other applications. One exaample will be given later. The turtle 
+Graphics can be used for colorising QR codes. 
+
 ## Turtle Graphics
 
 In this node I made use of the special character of the Python module Turtle Graphics. As long one waits
