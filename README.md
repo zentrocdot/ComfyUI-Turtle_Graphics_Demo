@@ -29,8 +29,7 @@ to be cont`d
 
 Solarized dark             |  Solarized Ocean
 :-------------------------:|:-------------------------:
-![ComfyUI_temp_otckr_00005_ (7)](https://github.com/user-attachments/assets/31da7bcc-5e1b-4a17-8304-0c5930500d77)
-  |  ![ComfyUI_temp_otckr_00006_ (2)](https://github.com/user-attachments/assets/dea94313-e337-48d1-a219-8ecf719be195)
+![ComfyUI_temp_otckr_00005_ (7)](https://github.com/user-attachments/assets/5d3bcd8a-24ab-43d7-99e3-d29c0f38cef9) | ![ComfyUI_temp_otckr_00006_ (2)](https://github.com/user-attachments/assets/2db35f0b-4219-4007-afc3-856d729900d1)
 
 ## Known Problems
 
