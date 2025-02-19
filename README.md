@@ -27,8 +27,8 @@ to be cont`d
 
 ## Examples
 
-Solarized dark             |  Solarized Ocean
-:-------------------------:|:-------------------------:
+Spiral Demo            | Spiral Demo        |   Spiral Demo
+:-------------------------:|:-------------------------: | :----------------------------------:
 ![ComfyUI_temp_otckr_00005_ (7)](https://github.com/user-attachments/assets/5d3bcd8a-24ab-43d7-99e3-d29c0f38cef9) | ![ComfyUI_temp_otckr_00006_ (2)](https://github.com/user-attachments/assets/2db35f0b-4219-4007-afc3-856d729900d1) | ![ComfyUI_temp_otckr_00010_ (4)](https://github.com/user-attachments/assets/ef0e5a23-2228-4a34-863d-d2b0b47188cb)
 
 ## Known Problems
