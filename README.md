@@ -37,11 +37,8 @@ To be cont'd
 
   📎     | Column 1            | Column 2         |   Column 3  
 :----: | :-------------------------: | :-------------------------: | :----------------------------------:
-Row 1 | ![ComfyUI_temp_otckr_00001_ (8)](https://github.com/user-attachments/assets/66616124-c944-4a38-afda-146fecfb7cb5) | ![ComfyUI_temp_otckr_00003_ (5)](https://github.com/user-attachments/assets/c![ComfyUI_temp_otckr_00014_ (4)](https://github.com/user-attachments/assets/354a7e8b-89b7-4b2f-9a96-19ccfc6b2612)
-0500845-741f-4656-a926-012a22f0f303) | ![ComfyUI_temp_otckr_00005_ (8)](https://github.com/user-attachments/assets/7aa08fd7-6b52-4268-8833-a15e76d75328)
-Row 2 | ![ComfyUI_temp_otckr_00009_ (2)](https://github.com/user-attachments/assets/46b0ec04-da9f-4484-a311-ef33faa53510)oading ComfyUI_temp_otckr_00011_ (3).png…]()
-
-![Uploading ComfyUI_temp_otckr_00014_ (4).png…]()
+Row 1 | ![ComfyUI_temp_otckr_00001_ (8)](https://github.com/user-attachments/assets/45e339f2-71ed-4a6b-94fb-f268ae1b7b3c) | ![ComfyUI_temp_otckr_00004_ (4)](https://github.com/user-attachments/assets/0037b51f-3923-4183-b34e-de4f3d9b848b) | ![ComfyUI_temp_otckr_00005_ (8)](https://github.com/user-attachments/assets/794afeba-5f9d-401a-8af6-cbab965823a5)
+Row 2 | ![ComfyUI_temp_otckr_00009_ (2)](https://github.com/user-attachments/assets/8ea38ed5-aaad-421a-86cb-cfc1cebe9a80) | ![ComfyUI_temp_otckr_00011_ (3)](https://github.com/user-attachments/assets/4acdc9a9-f7eb-4c1a-b199-fce1ac6497ba) | ![ComfyUI_temp_otckr_00014_ (4)](https://github.com/user-attachments/assets/c86da184-cb52-48c9-8582-d896d47bb95b)
 
 
 ### Helix Node
