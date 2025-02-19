@@ -25,12 +25,13 @@ If the background is exchanged by a black background it us also possible to remo
 
 To be cont'd
 
-##
+## Turtle Graphics Spiral Demo
 
+Figure 1 shows the Turtle Graphics Spiral Demo node.  
 
 ![image](https://github.com/user-attachments/assets/9d315296-cd2f-439d-afae-aa740b8653b8)
 
-
+*Figure 1: Turtle Graphics Spiral Demo*
 
 ## Examples
 
@@ -41,10 +42,10 @@ To be cont'd
 Row 1 | ![ComfyUI_temp_otckr_00005_ (7)](https://github.com/user-attachments/assets/5d3bcd8a-24ab-43d7-99e3-d29c0f38cef9) | ![ComfyUI_temp_otckr_00006_ (2)](https://github.com/user-attachments/assets/2db35f0b-4219-4007-afc3-856d729900d1) | ![ComfyUI_temp_otckr_00010_ (4)](https://github.com/user-attachments/assets/ef0e5a23-2228-4a34-863d-d2b0b47188cb)
 Row 2 | ![ComfyUI_temp_otckr_00013_](https://github.com/user-attachments/assets/b03ca5e8-6a57-4665-b1fe-baa39944432a) | ![ComfyUI_temp_otckr_00015_ (1)](https://github.com/user-attachments/assets/62d14758-3954-4ed7-b204-0958ef0e0d41) | ![ComfyUI_temp_otckr_00016_](https://github.com/user-attachments/assets/b29f3a54-c7ec-477b-8d7f-f4aba416c81f)
 
-
-
-
 ## Known Problems
 
-Under up to now unknown contions Tkinker is chrashing. This can be fixed by a new start of ComfyUI.
+<p align="justify">Tkinker crashes under unknown circumstances. This can be resolved by restarting ComfyUI.</p>
 
+# References
+
+[1] https://docs.python.org/3/library/turtle.html
