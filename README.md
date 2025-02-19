@@ -27,6 +27,20 @@ To be cont'd
 
 ## Turtle Graphics Spiral Demo
 
+### Square Node
+
+to do ...
+
+### Helix Node
+
+to do ...
+
+### Circle Demo
+
+
+
+
+
 ### Spiral Node 
 
 <p align="justify">Figure 1 shows the Turtle Graphics Spiral Demo 
