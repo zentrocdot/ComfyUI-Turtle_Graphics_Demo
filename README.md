@@ -25,6 +25,13 @@ If the background is exchanged by a black background it us also possible to remo
 
 to be cont`d
 
+## Examples
+
+Solarized dark             |  Solarized Ocean
+:-------------------------:|:-------------------------:
+![ComfyUI_temp_otckr_00005_ (7)](https://github.com/user-attachments/assets/31da7bcc-5e1b-4a17-8304-0c5930500d77)
+  |  ![ComfyUI_temp_otckr_00006_ (2)](https://github.com/user-attachments/assets/dea94313-e337-48d1-a219-8ecf719be195)
+
 ## Known Problems
 
 Under up to now unknown contions Tkinker is chrashing. This can be fixed by a new start of ComfyUI.
