@@ -25,6 +25,17 @@ If the background is exchanged by a black background it us also possible to remo
 
 To be cont'd
 
+## Turtle Graphics
+
+In this node I made use of the special character of the Python module Turtle Graphics. As long one waits
+untill the image is drawn everything is fine. If not it could be that the code will  have a short confusion 
+in form of a catched error in the background. 
+
+Turtle Graphics is using Tkinter for the windows management. Starting a draw command Turtle Graphics is 
+opening a window for drawing. Within the node one can decide to show this window or not.
+
+One can decide to let a turtle or another shape drawing the image. This can also be set in the node.
+
 ## Turtle Graphics Spiral Demo
 
 ### Square Node
@@ -73,6 +84,10 @@ Row 3 | ![ComfyUI_temp_tvbxm_00010_ (1)](https://github.com/user-attachments/ass
 ## Known Problems
 
 <p align="justify">Tkinker crashes under unknown circumstances. This can be resolved by restarting ComfyUI.</p>
+
+## Open Issues
+
+Opening and closing of a Turtle Graphics window or start and stop of a Turtle Graphics object is not working as expected.
 
 # References
 
