@@ -31,19 +31,19 @@ To be cont'd
 
 ![image](https://github.com/user-attachments/assets/d6a191c8-2e52-4ad1-b571-9847834bc52f)
 
-to do ...
+*Figure 1: Turtle Graphics Square Demo*
 
 ### Helix Node
 
 ![image](https://github.com/user-attachments/assets/63fbd8ad-b69e-4745-a13e-b1ffb24ecb07)
 
-to do ...
+*Figure 2: Turtle Graphics Helix Demo*
 
 ### Circle Demo
 
 ![image](https://github.com/user-attachments/assets/faeb7fbd-e715-4a50-8116-1e39b7846d8d)
 
-to do ...
+*Figure 3: Turtle Graphics Circle Demo*
 
 ### Spiral Node 
 
@@ -52,7 +52,7 @@ node. The settings for the graphics are fully parameterised.</p>
 
 ![image](https://github.com/user-attachments/assets/9d315296-cd2f-439d-afae-aa740b8653b8)
 
-*Figure 1: Turtle Graphics Spiral Demo*
+*Figure 4: Turtle Graphics Spiral Demo*
 
 ## Graphics Examples
 
