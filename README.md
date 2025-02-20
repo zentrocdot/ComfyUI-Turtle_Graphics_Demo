@@ -43,6 +43,10 @@ opening a window for drawing. Within the node one can decide to show this window
 
 One can decide to let a turtle or another shape drawing the image. This can also be set in the node.
 
+## Node Settings
+
+The node settings are largely self-explanatory. Accordingly, I am currently only providing a few comments.
+
 ## Turtle Graphics Spiral Demo
 
 ### Square Node
