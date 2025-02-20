@@ -118,6 +118,13 @@ RuntimeError: main thread is not in main loop
 
 Tcl_AsyncDelete: async handler deleted by the wrong thread
 
+## Open Questions
+
+In real-life use of the node, a few questions have arisen that require clarification. As 
+long as I am using a square format the resulting image is with or without upscaling in his
+quality good. I used a landscape format and the image became blurry. It became even more 
+blurred by changing the background.
+
 ## Open Issues
 
 Opening and closing of a Turtle Graphics window or start and stop of a Turtle Graphics object is not working as expected.
