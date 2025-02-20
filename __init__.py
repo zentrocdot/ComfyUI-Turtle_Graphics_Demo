@@ -6,7 +6,8 @@ NODE_CLASS_MAPPINGS = {
     "🪲 Turtle Graphics Spiral Demo": TurtleGraphicsSpiralDemo,
     "🪲 Turtle Graphics Circle Demo": TurtleGraphicsCircleDemo,
     "🪲 Turtle Graphics Helix Demo": TurtleGraphicsHelixDemo,
-    "🪲 Turtle Graphics Square Demo": TurtleGraphicsSpuareDemo,
+    "🪲 Turtle Graphics Square (0) Demo": TurtleGraphicsSpuare0Demo,
+    "🪲 Turtle Graphics Square (1) Demo": TurtleGraphicsSpuare1Demo,
     }
 
 WEB_DIRECTORY = "./js"
