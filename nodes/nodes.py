@@ -1,25 +1,31 @@
 #!/usr/bin/python
-'''Turtle graphics demo.'''
+'''Simple Turtle Graphics demo(nstrator).'''
 # pylint: disable=invalid-name
 # pylint: disable=bare-except
+# pylint: disable=broad-exception-caught
 # pylint: disable=no-member
 # pylint: disable=too-many-positional-arguments
 # pylint: disable=unused-argument
 # pylint: disable=too-many-arguments
 # pylint: disable=line-too-long
 # pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
+# pylint: disable=too-many-branches
+# pylint: disable=protected-access
 
-# Import the Python modules.
+# Import the standard Python modules.
 import re
 import hashlib
 import time
-from io import BytesIO
 import turtle
-import cv2
-from PIL import Image
-import numpy as np
+from io import BytesIO
+
+# Import the third party Python modules.
 import torch
 import webcolors
+import cv2
+import numpy as np
+from PIL import Image
 
 # Set the shape of the turtle.
 TURTLE = ['turtle', 'arrow', 'blank', 'circle', 'classic', 'square', 'triangle']
@@ -68,6 +74,8 @@ def replace_color(image, replacement_color):
 # ***************************
 def get_closest_color(request_color):
     '''Get the closest color.'''
+    # Initalise the closed color name.
+    closest_color_name = None
     # Create a new color dictionary.
     min_colors = {}
     # Loop over the webcolor names.
@@ -78,25 +86,30 @@ def get_closest_color(request_color):
         rd = (rc - request_color[0]) ** 2
         gd = (gc - request_color[1]) ** 2
         bd = (bc - request_color[2]) ** 2
-        # Add name and color value to dictionary.
+        # Add the name and the color value to dictionary.
         min_colors[(rd + gd + bd)] = name
+    closest_color_name = min_colors[min(min_colors.keys())]
     # Return the closest color.
-    return min_colors[min(min_colors.keys())]
+    return closest_color_name
 
 # ************************
 # Get color name function.
 # ************************
 def get_color_name(rgb_tuple):
     '''Get the color name.'''
+    # Initialise color name.
+    color_name = None
     # Try to get the color name.
     try:
         # Convert RGB to hex.
         hex_value = webcolors.rgb_to_hex(rgb_tuple)
         # Get the color name.
-        return webcolors.hex_to_name(hex_value)
+        color_name = webcolors.hex_to_name(hex_value)
     except ValueError:
-        # If exact match not found, find the closest color.
-        return get_closest_color(rgb_tuple)
+        # If exact match could not be found, find the closest color.
+        color_name = get_closest_color(rgb_tuple)
+    # Return the color name.
+    return color_name
 
 # *************
 # Color to rgb.
@@ -104,7 +117,7 @@ def get_color_name(rgb_tuple):
 def color_to_rgb(color):
     '''Color to rgb.'''
     # Check input color type.
-    if color == None or isinstance(color, (list, tuple)):
+    if color is None or isinstance(color, (list, tuple)):
         rgb = color
     elif re.match('#', color):
         rgb = webcolors.hex_to_rgb(color)
@@ -291,11 +304,11 @@ class TurtleGraphicsCircleDemo:
             if withdraw_window:
                 root.quit()
             else:
+                turtle.exitonclick()
                 turtle.done()
                 turtle.mainloop()
         except Exception as err:
             print("ERROR:", str(err))
-            pass
         # Return the opencv image.
         return pil_image
 
@@ -452,11 +465,11 @@ class TurtleGraphicsHelixDemo:
             if withdraw_window:
                 root.quit()
             else:
+                turtle.exitonclick()
                 turtle.done()
                 turtle.mainloop()
         except Exception as err:
             print("ERROR:", str(err))
-            pass
         # Return the opencv image.
         return pil_image
 
@@ -621,11 +634,11 @@ class TurtleGraphicsSpiralDemo:
             if withdraw_window:
                 root.quit()
             else:
+                turtle.exitonclick()
                 turtle.done()
                 turtle.mainloop()
         except Exception as err:
             print("ERROR:", str(err))
-            pass
         # Return the opencv image.
         return pil_image
 
@@ -655,10 +668,10 @@ class TurtleGraphicsSpiralDemo:
         # Return the return types.
         return (image,)
 
-# ******************************
-# Class TurtleGraphicsSpuareDemo
-# ******************************
-class TurtleGraphicsSpuareDemo:
+# *******************************
+# Class TurtleGraphicsSpuare0Demo
+# *******************************
+class TurtleGraphicsSpuare0Demo:
     '''Create a Turtle Graphics circle demo.'''
 
     @classmethod
@@ -683,6 +696,7 @@ class TurtleGraphicsSpuareDemo:
                 "angle": ("FLOAT", {"default": 5.0, "min": 0.0, "max": 360.0}),
                 "increment_angle": ("FLOAT", {"default": 5.0, "min": 0.0, "max": 360.0}),
                 "start_angle": ("FLOAT", {"default": 5.0, "min": 0.0, "max": 360.0}),
+                "switch_color": ("BOOLEAN", {"default": True}),
                 "shape": (TURTLE, {}),
                 "hide_turtle": ("BOOLEAN", {"default": True, "label_on": "on", "label_off": "off"}),
                 "fill_on_off": ("BOOLEAN", {"default": False, "label_on": "on", "label_off": "off"}),
@@ -712,9 +726,8 @@ class TurtleGraphicsSpuareDemo:
     def demo(self, thickness, turtle_speed, shape, number_rotations, hide_turtle,
              screen_color, fg_color, screen_x, screen_y, fill_on_off,
              fill_color, pen_color, start_length, increment_length,
-             withdraw_window, angle, start_angle, increment_angle):
+             withdraw_window, angle, start_angle, increment_angle, switch_color):
         '''Create a simple Turtle Graphics Demo.'''
-        global WINON
         # Create a fg color list.
         fg_color = create_color_list(fg_color)
         # Set the len.
@@ -762,8 +775,11 @@ class TurtleGraphicsSpuareDemo:
             fac = start_length
             ts.left(start_angle)
             for i in range(number_rotations):
-                ts.pencolor(fg_color[i % col_len])
-                for i in range (0,4):
+                if switch_color:
+                    ts.pencolor(fg_color[i % col_len])
+                for j in range (0,4):
+                    if not switch_color:
+                        ts.pencolor(fg_color[j % col_len])
                     ts.forward(fac)
                     ts.left(90)
                 ts.left(angle)
@@ -791,11 +807,11 @@ class TurtleGraphicsSpuareDemo:
             if withdraw_window:
                 root.quit()
             else:
+                turtle.exitonclick()
                 turtle.done()
                 turtle.mainloop()
         except Exception as err:
             print("ERROR:", str(err))
-            pass
         # Return the opencv image.
         return pil_image
 
@@ -804,14 +820,189 @@ class TurtleGraphicsSpuareDemo:
                          screen_y, fill_on_off, fill_color, replacement_color,
                          width, height, pen_color, replace_on_off, remove_on_off,
                          start_length, increment_length, withdraw_window, angle,
-                         start_angle, increment_angle):
+                         start_angle, increment_angle, switch_color):
         '''Main node function. Create a Turtle Graphics demo.'''
         # Run the demo.
         image = self.demo(thickness, turtle_speed, shape, number_rotations,
                           hide_turtle, screen_color, fg_color,
                           screen_x, screen_y, fill_on_off,
                           fill_color, pen_color, start_length, increment_length,
-                          withdraw_window, angle, start_angle, increment_angle)
+                          withdraw_window, angle, start_angle, increment_angle, switch_color)
+        # Pil image to Numpy array.
+        numpy_image = np.array(image)
+        # Resize the image.
+        image = resize_pil_image(numpy_image, width, height)
+        # Replace the color if flag true.
+        if replace_on_off:
+            image = replace_color(image, replacement_color)
+        # Remove the color if flag true.
+        if remove_on_off:
+            image = remove_color(image)
+        # Convert 'PIL' image to Tensor.
+        image = pil2tensor(image)
+        # Return the return types.
+        return (image,)
+
+# *******************************
+# Class TurtleGraphicsSpuare1Demo
+# *******************************
+class TurtleGraphicsSpuare1Demo:
+    '''Create a Turtle Graphics circle demo.'''
+
+    @classmethod
+    def IS_CHANGED(cls, *args, **kwargs):
+        '''Class method IS_CHNAGED.'''
+        #m = hashlib.sha256().update(str(time.time()).encode("utf-8"))
+        m = hashlib.sha256()
+        bytes_string = str(time.time()).encode("utf-8")
+        m.update(bytes_string)
+        return m.digest().hex()
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        '''Define the input types.'''
+        return {
+            "required": {
+                "thickness": ("INT", {"default": 1, "min": 1, "max": 256}),
+                "turtle_speed": ("INT", {"default": 0, "min": 0, "max": 10}),
+                "number_rotations": ("INT", {"default": 80, "min": 1, "max": 2048}),
+                "start_length": ("INT", {"default": 10, "min": 0, "max": 2048}),
+                "increment_length": ("INT", {"default": 5, "min": 0, "max": 2048}),
+                "angle": ("FLOAT", {"default": 5.0, "min": 0.0, "max": 360.0}),
+                "increment_angle": ("FLOAT", {"default": 5.0, "min": 0.0, "max": 360.0}),
+                "start_angle": ("FLOAT", {"default": 5.0, "min": 0.0, "max": 360.0}),
+                "switch_color": ("BOOLEAN", {"default": True}),
+                "shape": (TURTLE, {}),
+                "hide_turtle": ("BOOLEAN", {"default": True, "label_on": "on", "label_off": "off"}),
+                "fill_on_off": ("BOOLEAN", {"default": False, "label_on": "on", "label_off": "off"}),
+                "replace_on_off": ("BOOLEAN", {"default": False, "label_on": "on", "label_off": "off"}),
+                "remove_on_off": ("BOOLEAN", {"default": False, "label_on": "on", "label_off": "off"}),
+                "fg_color": ("STRING", {"multiline": True, "default": "red, green, blue, yellow, cyan, magenta"}),
+                "pen_color": ("STRING", {"multiline": False, "default": "red"}),
+                "fill_color": ("STRING", {"multiline": False, "default": "blue"}),
+                "replacement_color": ("STRING", {"multiline": False, "default": "black"}),
+                "width": ("INT", {"default": 512, "min": 1, "max": 8192}),
+                "height": ("INT", {"default": 512, "min": 1, "max": 8192}),
+                "screen_x": ("INT", {"default": 512, "min": 1, "max": 4096}),
+                "screen_y": ("INT", {"default": 512, "min": 1, "max": 4096}),
+                "screen_color": ("STRING", {"multiline": False, "default": "orange"}),
+                "withdraw_window": ("BOOLEAN", {"default": False, "label_on": "on", "label_off": "off"}),
+            },
+            "optional": {
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    RETURN_NAMES = ("IMAGE",)
+    FUNCTION = "turtle_graphics_main"
+    CATEGORY = "🐢 Turtle Graphics"
+    OUTPUT_NODE = True
+
+    def demo(self, thickness, turtle_speed, shape, number_rotations, hide_turtle,
+             screen_color, fg_color, screen_x, screen_y, fill_on_off,
+             fill_color, pen_color, start_length, increment_length,
+             withdraw_window, angle, start_angle, increment_angle, switch_color):
+        '''Create a simple Turtle Graphics Demo.'''
+        # Create a fg color list.
+        fg_color = create_color_list(fg_color)
+        # Set the len.
+        col_len = len(fg_color)
+        # Set image to None.
+        n,m = 512,512
+        pil_image = Image.new('RGB', (n, m))
+        # Try to draw an image.
+        try:
+            # Define the turtle screen.
+            sc = turtle.Screen()
+            sc.setup(screen_x, screen_y)
+            # Set title and background color.
+            turtle.title('Object-Oriented Turtle Demo')
+            # Clear the screen.
+            turtle.clearscreen()
+            turtle.bgcolor(screen_color)
+            # Withdraw window.
+            root = turtle.getscreen()._root
+            if withdraw_window:
+                root.withdraw()
+            else:
+                root.deiconify()
+            # Define the turtle object.
+            ts = turtle.Turtle()
+            # Set the fill and pen color.
+            ts.fillcolor(fill_color)
+            ts.pencolor(pen_color)
+            # Set the shape of the turtle.
+            ts.shape(shape)
+            # Set the speed of the turtle.
+            ts.speed(turtle_speed)
+            # Set the pen size.
+            ts.pensize(thickness)
+            # Hide the turtle.
+            if hide_turtle:
+                turtle.hideturtle()
+                ts.hideturtle()
+            # Start fill.
+            if fill_on_off:
+                ts.begin_fill()
+            # ------------------------------------
+            # Run a loop.
+            # ------------------------------------
+            fac = start_length
+            ts.left(start_angle)
+            for i in range(number_rotations):
+                if switch_color:
+                    ts.pencolor(fg_color[i % col_len])
+                for i in range (0,4):
+                    if not switch_color:
+                        ts.pencolor(fg_color[j % col_len])
+                    ts.forward(fac)
+                    ts.left(90)
+                ts.left(angle)
+                angle = angle + increment_angle
+                fac = fac + increment_length
+            # ------------------------------------
+            # End of loop.
+            # ------------------------------------
+            # End fill.
+            if fill_on_off:
+                ts.end_fill()
+            # Reset the pen color.
+            ts.pencolor(pen_color)
+            # Hide the turtle.
+            if hide_turtle:
+                turtle.hideturtle()
+                ts.hideturtle()
+            # Get the canvas from the screen.
+            cs = turtle.getscreen().getcanvas()
+            eps = cs.postscript(colormode='color')
+            # Create a Pil image.
+            pil_image = Image.open(BytesIO(eps.encode('utf-8'))).convert("RGB")
+            pil_image = pil_image.resize((screen_x, screen_y), resample=3)
+            # Turtle is done.
+            if withdraw_window:
+                root.quit()
+            else:
+                turtle.exitonclick()
+                turtle.done()
+                turtle.mainloop()
+        except Exception as err:
+            print("ERROR:", str(err))
+        # Return the opencv image.
+        return pil_image
+
+    def turtle_graphics_main(self, thickness, turtle_speed, shape, number_rotations,
+                         hide_turtle, screen_color, fg_color, screen_x,
+                         screen_y, fill_on_off, fill_color, replacement_color,
+                         width, height, pen_color, replace_on_off, remove_on_off,
+                         start_length, increment_length, withdraw_window, angle,
+                         start_angle, increment_angle, switch_color):
+        '''Main node function. Create a Turtle Graphics demo.'''
+        # Run the demo.
+        image = self.demo(thickness, turtle_speed, shape, number_rotations,
+                          hide_turtle, screen_color, fg_color,
+                          screen_x, screen_y, fill_on_off,
+                          fill_color, pen_color, start_length, increment_length,
+                          withdraw_window, angle, start_angle, increment_angle, switch_color)
         # Pil image to Numpy array.
         numpy_image = np.array(image)
         # Resize the image.
