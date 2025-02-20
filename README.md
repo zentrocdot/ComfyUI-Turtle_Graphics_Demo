@@ -67,11 +67,24 @@ Row 3 | ![ComfyUI_temp_otckr_00011_ (4)](https://github.com/user-attachments/ass
 
 *Figure 2: Turtle Graphics Helix Demo*
 
+ 📎     | Column 1            | Column 2         |   Column 3  
+:----: | :-------------------------: | :-------------------------: | :----------------------------------:
+Row 1 | ![ComfyUI_temp_otckr_00002_ (4)](https://github.com/user-attachments/assets/12ae4099-5ac6-43c8-9670-068cb63f3b98) |
+![ComfyUI_temp_otckr_00008_ (2)](https://github.com/user-attachments/assets/c5c5a48b-01a3-4d50-8cc2-23baa3c01afe) |
+![ComfyUI_temp_otckr_00021_ (1)](https://github.com/user-attachments/assets/c86751f2-4488-4f71-a61b-9b02b888a1a2)
+Row 2 | ![ComfyUI_temp_otckr_00027_](https://github.com/user-attachments/assets/dfe7fedd-6cea-4725-9e0b-fe443b24db16) |
+![ComfyUI_temp_otckr_00005_ (10)](https://github.com/user-attachments/assets/12786dce-22bb-419b-b766-5fa0126ab304) |
+![ComfyUI_temp_otckr_00028_](https://github.com/user-attachments/assets/b5ef6459-3dcb-4f8e-a133-16fbbdfbcef7)
+
 ### Circle Demo
 
 ![image](https://github.com/user-attachments/assets/faeb7fbd-e715-4a50-8116-1e39b7846d8d)
 
 *Figure 3: Turtle Graphics Circle Demo*
+
+  📎     | Column 1            | Column 2         |   Column 3  
+:----: | :-------------------------: | :-------------------------: | :----------------------------------:
+Row 1 | ![ComfyUI_temp_otckr_00030_](https://github.com/user-attachments/assets/d78b51bf-0efb-4c8b-a885-e4fc4e6fbc90) | ![ComfyUI_temp_otckr_00032_](https://github.com/user-attachments/assets/412b17e0-63e2-42c2-b522-e27eff587049) | ![ComfyUI_temp_otckr_00034_](https://github.com/user-attachments/assets/5701d9a3-ce5f-4e99-acad-ef6af2ba044a)
 
 ### Spiral Node 
 
