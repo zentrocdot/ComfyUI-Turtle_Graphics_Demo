@@ -12,6 +12,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 # pylint: disable=protected-access
+# pylint: disable=too-many-lines
 
 # Import the standard Python modules.
 import re
@@ -29,6 +30,17 @@ from PIL import Image
 
 # Set the shape of the turtle.
 TURTLE = ['turtle', 'arrow', 'blank', 'circle', 'classic', 'square', 'triangle']
+
+# Define the resize sampler.
+RESIZE_SAMPLER = {"LANCZOS": 1, "BICUBIC": 3, "BILINEAR": 2,
+                  "BOX": 4, "HAMMING": 5, "NEAREST": 0}
+#RESIZE_SAMPLER = {"INTER_NEAREST": cv2.INTER_NEAREST,
+#                  "INTER_LINEAR": cv2.INTER_LINEAR,
+#                  "INTER_AREA": cv2.INTER_AREA,
+#                  "INTER_CUBIC": cv2.INTER_CUBIC,
+#                  "INTER_LANCZOS4": cv2.INTER_LANCZOS4,
+#}
+KEYS = list(RESIZE_SAMPLER.keys())
 
 # ******************
 # Create color list.
@@ -128,20 +140,6 @@ def color_to_rgb(color):
     # Return the RGB color tuple.
     return r,g,b
 
-# *****************
-# Resize Pil image.
-# *****************
-def resize_pil_image(image, width, height):
-    '''Resize Pil image.'''
-    # Numpy to Pil
-    image = Image.fromarray(image)
-    # Resize Pil image.
-    pil_image = image.resize((width, height), resample=3)
-    # Pil to Numpy.
-    image = np.array(pil_image)
-    # Return Image.
-    return image
-
 # ***********************
 # Function string2tuple()
 # ***********************
@@ -160,6 +158,27 @@ def string2tuple(color_string):
         color_tuple = (128,128,128)
     # Return the color tuple
     return color_tuple
+
+# *****************
+# Resize Pil image.
+# *****************
+def resize_pil_image(image, width, height, sampler):
+    '''Resize Pil image.'''
+    h, w, c = image.shape
+    print("Dimensions:", h, w, c)
+    if h == height and w == width:
+        print("Image not upscaled ...")
+        # Return Image.
+        return image
+    # Numpy to Pil
+    image = Image.fromarray(image)
+    # Resize Pil image.
+    pil_image = image.resize((width, height), resample=sampler)
+    #image = cv2.resize(image, dsize=(width, height), interpolation=sampler)
+    # Pil to Numpy.
+    image = np.array(pil_image)
+    # Return Image.
+    return image
 
 # -----------------------
 # Tensor to PIL function.
@@ -213,6 +232,7 @@ class TurtleGraphicsCircleDemo:
                 "replacement_color": ("STRING", {"multiline": False, "default": "black"}),
                 "width": ("INT", {"default": 512, "min": 1, "max": 8192}),
                 "height": ("INT", {"default": 512, "min": 1, "max": 8192}),
+                "resize_sampler": (KEYS, {}),
                 "screen_x": ("INT", {"default": 512, "min": 1, "max": 4096}),
                 "screen_y": ("INT", {"default": 512, "min": 1, "max": 4096}),
                 "screen_color": ("STRING", {"multiline": False, "default": "orange"}),
@@ -299,7 +319,6 @@ class TurtleGraphicsCircleDemo:
             eps = cs.postscript(colormode='color')
             # Create a Pil image.
             pil_image = Image.open(BytesIO(eps.encode('utf-8'))).convert("RGB")
-            pil_image = pil_image.resize((screen_x, screen_y), resample=3)
             # Turtle is done.
             if withdraw_window:
                 root.quit()
@@ -308,7 +327,10 @@ class TurtleGraphicsCircleDemo:
                 turtle.done()
                 turtle.mainloop()
         except Exception as err:
-            print("ERROR:", str(err))
+            if str(type(err)) == "<class 'turtle.Terminator'>":
+                print("ERROR:", "turtle.Terminator")
+            else:
+                print("ERROR:", str(err))
         # Return the opencv image.
         return pil_image
 
@@ -316,7 +338,7 @@ class TurtleGraphicsCircleDemo:
             rotation_angle, hide_turtle, circle_radius, screen_color, fg_color,
             screen_x, screen_y, fill_on_off, fill_color, replacement_color, width,
             height, pen_color, replace_on_off, remove_on_off, withdraw_window,
-            start_angle):
+            start_angle, resize_sampler):
         '''Main node function. Create a Turtle Graphics demo.'''
         # Run the demo.
         image = self.demo(thickness, turtle_speed, shape, number_rotations,
@@ -326,8 +348,9 @@ class TurtleGraphicsCircleDemo:
                     start_angle)
         # Pil image to numpy image.
         numpy_image = np.array(image)
-        # Resize image.
-        image = resize_pil_image(numpy_image, width, height)
+        # Resize the image.
+        sampler = RESIZE_SAMPLER[resize_sampler]
+        image = resize_pil_image(numpy_image, width, height, sampler)
         # Replace the color if flag true.
         if replace_on_off:
             image = replace_color(image, replacement_color)
@@ -348,7 +371,6 @@ class TurtleGraphicsHelixDemo:
     @classmethod
     def IS_CHANGED(cls, *args, **kwargs):
         '''Class method IS_CHNAGED.'''
-        #m = hashlib.sha256().update(str(time.time()).encode("utf-8"))
         m = hashlib.sha256()
         bytes_string = str(time.time()).encode("utf-8")
         m.update(bytes_string)
@@ -375,6 +397,7 @@ class TurtleGraphicsHelixDemo:
                 "replacement_color": ("STRING", {"multiline": False, "default": "black"}),
                 "width": ("INT", {"default": 512, "min": 1, "max": 8192}),
                 "height": ("INT", {"default": 512, "min": 1, "max": 8192}),
+                "resize_sampler": (KEYS, {}),
                 "screen_x": ("INT", {"default": 512, "min": 1, "max": 4096}),
                 "screen_y": ("INT", {"default": 512, "min": 1, "max": 4096}),
                 "screen_color": ("STRING", {"multiline": False, "default": "orange"}),
@@ -460,7 +483,6 @@ class TurtleGraphicsHelixDemo:
             eps = cs.postscript(colormode='color')
             # Create a Pil image.
             pil_image = Image.open(BytesIO(eps.encode('utf-8'))).convert("RGB")
-            pil_image = pil_image.resize((screen_x, screen_y), resample=3)
             # Turtle is done.
             if withdraw_window:
                 root.quit()
@@ -469,14 +491,18 @@ class TurtleGraphicsHelixDemo:
                 turtle.done()
                 turtle.mainloop()
         except Exception as err:
-            print("ERROR:", str(err))
+            if str(type(err)) == "<class 'turtle.Terminator'>":
+                print("ERROR:", "turtle.Terminator")
+            else:
+                print("ERROR:", str(err))
         # Return the opencv image.
         return pil_image
 
     def turtle_graphics_main(self, thickness, turtle_speed, shape, max_length, hide_turtle,
                          screen_color, fg_color, screen_x, screen_y, fill_on_off,
                          fill_color, replacement_color, width, height,
-                         pen_color, replace_on_off, remove_on_off, angle, withdraw_window, start_angle):
+                         pen_color, replace_on_off, remove_on_off, angle, withdraw_window,
+                         start_angle, resize_sampler):
         '''Main node function. Create a Turtle Graphics demo.'''
         # Run the demo.
         image = self.demo(thickness, turtle_speed, shape, max_length,
@@ -485,8 +511,9 @@ class TurtleGraphicsHelixDemo:
                           fill_color, pen_color, angle, withdraw_window, start_angle)
         # Pil image to numpy image.
         numpy_image = np.array(image)
-        # Resize image.
-        image = resize_pil_image(numpy_image, width, height)
+        # Resize the image.
+        sampler = RESIZE_SAMPLER[resize_sampler]
+        image = resize_pil_image(numpy_image, width, height, sampler)
         # Replace the color if flag true.
         if replace_on_off:
             image = replace_color(image, replacement_color)
@@ -537,6 +564,7 @@ class TurtleGraphicsSpiralDemo:
                 "replacement_color": ("STRING", {"multiline": False, "default": "black"}),
                 "width": ("INT", {"default": 512, "min": 1, "max": 8192}),
                 "height": ("INT", {"default": 512, "min": 1, "max": 8192}),
+                "resize_sampler": (KEYS, {}),
                 "screen_x": ("INT", {"default": 512, "min": 1, "max": 4096}),
                 "screen_y": ("INT", {"default": 512, "min": 1, "max": 4096}),
                 "screen_color": ("STRING", {"multiline": False, "default": "orange"}),
@@ -629,7 +657,6 @@ class TurtleGraphicsSpiralDemo:
             eps = cs.postscript(colormode='color')
             # Create a Pil image.
             pil_image = Image.open(BytesIO(eps.encode('utf-8'))).convert("RGB")
-            pil_image = pil_image.resize((screen_x, screen_y), resample=3)
             # Turtle is done.
             if withdraw_window:
                 root.quit()
@@ -638,7 +665,10 @@ class TurtleGraphicsSpiralDemo:
                 turtle.done()
                 turtle.mainloop()
         except Exception as err:
-            print("ERROR:", str(err))
+            if str(type(err)) == "<class 'turtle.Terminator'>":
+                print("ERROR:", "turtle.Terminator")
+            else:
+                print("ERROR:", str(err))
         # Return the opencv image.
         return pil_image
 
@@ -646,7 +676,7 @@ class TurtleGraphicsSpiralDemo:
             hide_turtle, screen_color, fg_color, screen_x, screen_y, fill_on_off,
             fill_color, replacement_color, width, height, pen_color, replace_on_off,
             remove_on_off, start_radius, withdraw_window, start_angle, increment_angle,
-            scale, number_lobes, switch_color):
+            scale, number_lobes, switch_color, resize_sampler):
         '''Main node function. Create a Turtle Graphics demo.'''
         # Run the demo.
         image = self.demo(thickness, turtle_speed, shape, number_circles, hide_turtle,
@@ -656,7 +686,8 @@ class TurtleGraphicsSpiralDemo:
         # Pil image to numpy image.
         numpy_image = np.array(image)
         # Resize the image.
-        image = resize_pil_image(numpy_image, width, height)
+        sampler = RESIZE_SAMPLER[resize_sampler]
+        image = resize_pil_image(numpy_image, width, height, sampler)
         # Replace the color if flag true.
         if replace_on_off:
             image = replace_color(image, replacement_color)
@@ -668,16 +699,15 @@ class TurtleGraphicsSpiralDemo:
         # Return the return types.
         return (image,)
 
-# *******************************
-# Class TurtleGraphicsSpuare0Demo
-# *******************************
-class TurtleGraphicsSpuare0Demo:
+# ******************************
+# Class TurtleGraphicsSpuareDemo
+# ******************************
+class TurtleGraphicsSpuareDemo:
     '''Create a Turtle Graphics circle demo.'''
 
     @classmethod
     def IS_CHANGED(cls, *args, **kwargs):
         '''Class method IS_CHNAGED.'''
-        #m = hashlib.sha256().update(str(time.time()).encode("utf-8"))
         m = hashlib.sha256()
         bytes_string = str(time.time()).encode("utf-8")
         m.update(bytes_string)
@@ -708,6 +738,7 @@ class TurtleGraphicsSpuare0Demo:
                 "replacement_color": ("STRING", {"multiline": False, "default": "black"}),
                 "width": ("INT", {"default": 512, "min": 1, "max": 8192}),
                 "height": ("INT", {"default": 512, "min": 1, "max": 8192}),
+                "resize_sampler": (KEYS, {}),
                 "screen_x": ("INT", {"default": 512, "min": 1, "max": 4096}),
                 "screen_y": ("INT", {"default": 512, "min": 1, "max": 4096}),
                 "screen_color": ("STRING", {"multiline": False, "default": "orange"}),
@@ -802,7 +833,6 @@ class TurtleGraphicsSpuare0Demo:
             eps = cs.postscript(colormode='color')
             # Create a Pil image.
             pil_image = Image.open(BytesIO(eps.encode('utf-8'))).convert("RGB")
-            pil_image = pil_image.resize((screen_x, screen_y), resample=3)
             # Turtle is done.
             if withdraw_window:
                 root.quit()
@@ -811,7 +841,10 @@ class TurtleGraphicsSpuare0Demo:
                 turtle.done()
                 turtle.mainloop()
         except Exception as err:
-            print("ERROR:", str(err))
+            if str(type(err)) == "<class 'turtle.Terminator'>":
+                print("ERROR:", "turtle.Terminator")
+            else:
+                print("ERROR:", str(err))
         # Return the opencv image.
         return pil_image
 
@@ -820,7 +853,7 @@ class TurtleGraphicsSpuare0Demo:
                          screen_y, fill_on_off, fill_color, replacement_color,
                          width, height, pen_color, replace_on_off, remove_on_off,
                          start_length, increment_length, withdraw_window, angle,
-                         start_angle, increment_angle, switch_color):
+                         start_angle, increment_angle, switch_color, resize_sampler):
         '''Main node function. Create a Turtle Graphics demo.'''
         # Run the demo.
         image = self.demo(thickness, turtle_speed, shape, number_rotations,
@@ -831,7 +864,8 @@ class TurtleGraphicsSpuare0Demo:
         # Pil image to Numpy array.
         numpy_image = np.array(image)
         # Resize the image.
-        image = resize_pil_image(numpy_image, width, height)
+        sampler = RESIZE_SAMPLER[resize_sampler]
+        image = resize_pil_image(numpy_image, width, height, sampler)
         # Replace the color if flag true.
         if replace_on_off:
             image = replace_color(image, replacement_color)
@@ -843,16 +877,15 @@ class TurtleGraphicsSpuare0Demo:
         # Return the return types.
         return (image,)
 
-# *******************************
-# Class TurtleGraphicsSpuare1Demo
-# *******************************
-class TurtleGraphicsSpuare1Demo:
+# *********************************
+# Class TurtleGraphicsPropellerDemo
+# *********************************
+class TurtleGraphicsPropellerDemo:
     '''Create a Turtle Graphics circle demo.'''
 
     @classmethod
     def IS_CHANGED(cls, *args, **kwargs):
         '''Class method IS_CHNAGED.'''
-        #m = hashlib.sha256().update(str(time.time()).encode("utf-8"))
         m = hashlib.sha256()
         bytes_string = str(time.time()).encode("utf-8")
         m.update(bytes_string)
@@ -863,15 +896,11 @@ class TurtleGraphicsSpuare1Demo:
         '''Define the input types.'''
         return {
             "required": {
-                "thickness": ("INT", {"default": 1, "min": 1, "max": 256}),
+                "thickness": ("FLOAT", {"default": 0.1, "min": 0.1, "max": 256.0, "step": 0.1}),
                 "turtle_speed": ("INT", {"default": 0, "min": 0, "max": 10}),
-                "number_rotations": ("INT", {"default": 80, "min": 1, "max": 2048}),
-                "start_length": ("INT", {"default": 10, "min": 0, "max": 2048}),
-                "increment_length": ("INT", {"default": 5, "min": 0, "max": 2048}),
-                "angle": ("FLOAT", {"default": 5.0, "min": 0.0, "max": 360.0}),
-                "increment_angle": ("FLOAT", {"default": 5.0, "min": 0.0, "max": 360.0}),
+                "number_rotations": ("INT", {"default": 375, "min": 1, "max": 2048}),
+                "angle": ("FLOAT", {"default": 99.5, "min": 0.0, "max": 360.0}),
                 "start_angle": ("FLOAT", {"default": 5.0, "min": 0.0, "max": 360.0}),
-                "switch_color": ("BOOLEAN", {"default": True}),
                 "shape": (TURTLE, {}),
                 "hide_turtle": ("BOOLEAN", {"default": True, "label_on": "on", "label_off": "off"}),
                 "fill_on_off": ("BOOLEAN", {"default": False, "label_on": "on", "label_off": "off"}),
@@ -883,6 +912,7 @@ class TurtleGraphicsSpuare1Demo:
                 "replacement_color": ("STRING", {"multiline": False, "default": "black"}),
                 "width": ("INT", {"default": 512, "min": 1, "max": 8192}),
                 "height": ("INT", {"default": 512, "min": 1, "max": 8192}),
+                "resize_sampler": (KEYS, {}),
                 "screen_x": ("INT", {"default": 512, "min": 1, "max": 4096}),
                 "screen_y": ("INT", {"default": 512, "min": 1, "max": 4096}),
                 "screen_color": ("STRING", {"multiline": False, "default": "orange"}),
@@ -900,8 +930,7 @@ class TurtleGraphicsSpuare1Demo:
 
     def demo(self, thickness, turtle_speed, shape, number_rotations, hide_turtle,
              screen_color, fg_color, screen_x, screen_y, fill_on_off,
-             fill_color, pen_color, start_length, increment_length,
-             withdraw_window, angle, start_angle, increment_angle, switch_color):
+             fill_color, pen_color, withdraw_window, angle, start_angle):
         '''Create a simple Turtle Graphics Demo.'''
         # Create a fg color list.
         fg_color = create_color_list(fg_color)
@@ -947,19 +976,20 @@ class TurtleGraphicsSpuare1Demo:
             # ------------------------------------
             # Run a loop.
             # ------------------------------------
-            fac = start_length
+            idx = 0
+            col = 0
+            fac = number_rotations // col_len
             ts.left(start_angle)
-            for i in range(number_rotations):
-                if switch_color:
-                    ts.pencolor(fg_color[i % col_len])
-                for i in range (0,4):
-                    if not switch_color:
-                        ts.pencolor(fg_color[j % col_len])
-                    ts.forward(fac)
-                    ts.left(90)
-                ts.left(angle)
-                angle = angle + increment_angle
-                fac = fac + increment_length
+            for x in range(0, number_rotations):
+                #idx = c
+                ts.pencolor(fg_color[col])
+                ts.forward(x)
+                ts.right(angle)
+                if idx <= fac:
+                    idx += 1
+                else:
+                    col += 1
+                    idx = 0
             # ------------------------------------
             # End of loop.
             # ------------------------------------
@@ -977,7 +1007,6 @@ class TurtleGraphicsSpuare1Demo:
             eps = cs.postscript(colormode='color')
             # Create a Pil image.
             pil_image = Image.open(BytesIO(eps.encode('utf-8'))).convert("RGB")
-            pil_image = pil_image.resize((screen_x, screen_y), resample=3)
             # Turtle is done.
             if withdraw_window:
                 root.quit()
@@ -986,7 +1015,10 @@ class TurtleGraphicsSpuare1Demo:
                 turtle.done()
                 turtle.mainloop()
         except Exception as err:
-            print("ERROR:", str(err))
+            if str(type(err)) == "<class 'turtle.Terminator'>":
+                print("ERROR:", "turtle.Terminator")
+            else:
+                print("ERROR:", str(err))
         # Return the opencv image.
         return pil_image
 
@@ -994,19 +1026,18 @@ class TurtleGraphicsSpuare1Demo:
                          hide_turtle, screen_color, fg_color, screen_x,
                          screen_y, fill_on_off, fill_color, replacement_color,
                          width, height, pen_color, replace_on_off, remove_on_off,
-                         start_length, increment_length, withdraw_window, angle,
-                         start_angle, increment_angle, switch_color):
+                         withdraw_window, angle, start_angle, resize_sampler):
         '''Main node function. Create a Turtle Graphics demo.'''
         # Run the demo.
         image = self.demo(thickness, turtle_speed, shape, number_rotations,
-                          hide_turtle, screen_color, fg_color,
-                          screen_x, screen_y, fill_on_off,
-                          fill_color, pen_color, start_length, increment_length,
-                          withdraw_window, angle, start_angle, increment_angle, switch_color)
+                          hide_turtle, screen_color, fg_color, screen_x,
+                          screen_y, fill_on_off, fill_color, pen_color,
+                          withdraw_window, angle, start_angle)
         # Pil image to Numpy array.
         numpy_image = np.array(image)
         # Resize the image.
-        image = resize_pil_image(numpy_image, width, height)
+        sampler = RESIZE_SAMPLER[resize_sampler]
+        image = resize_pil_image(numpy_image, width, height, sampler)
         # Replace the color if flag true.
         if replace_on_off:
             image = replace_color(image, replacement_color)
