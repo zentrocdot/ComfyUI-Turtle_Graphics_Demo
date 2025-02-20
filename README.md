@@ -92,6 +92,12 @@ Row 3 | ![ComfyUI_temp_tvbxm_00010_ (1)](https://github.com/user-attachments/ass
 
 <p align="justify">Tkinker crashes under unknown circumstances. This can be resolved by restarting ComfyUI.</p>
 
+Unsolved Error:
+
+RuntimeError: main thread is not in main loop
+
+Tcl_AsyncDelete: async handler deleted by the wrong thread
+
 ## Open Issues
 
 Opening and closing of a Turtle Graphics window or start and stop of a Turtle Graphics object is not working as expected.
