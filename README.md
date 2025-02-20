@@ -57,9 +57,8 @@ One can decide to let a turtle or another shape drawing the image. This can also
 :----: | :-------------------------: | :-------------------------: | :----------------------------------:
 Row 1 | ![ComfyUI_temp_otckr_00021_](https://github.com/user-attachments/assets/5a59d225-7401-4864-8334-992170004991) | ![ComfyUI_temp_otckr_00004_ (4)](https://github.com/user-attachments/assets/0037b51f-3923-4183-b34e-de4f3d9b848b) | ![ComfyUI_temp_otckr_00005_ (8)](https://github.com/user-attachments/assets/794afeba-5f9d-401a-8af6-cbab965823a5)
 Row 2 | ![ComfyUI_temp_otckr_00009_ (2)](https://github.com/user-attachments/assets/8ea38ed5-aaad-421a-86cb-cfc1cebe9a80) | ![ComfyUI_temp_otckr_00029_](https://github.com/user-attachments/assets/05e5340f-3653-40cc-bc53-9a14e44d366d) | ![ComfyUI_temp_otckr_00040_](https://github.com/user-attachments/assets/22fc1d80-6b72-4464-ae84-8e44dc7ad81f)
+Row 3 | ![ComfyUI_temp_otckr_00011_ (4)](https://github.com/user-attachments/assets/6b7bdd90-3fae-4354-b16c-a728386028c7) | ![ComfyUI_temp_otckr_00022_](https://github.com/user-attachments/assets/aa7b63e4-08cb-4e01-845a-baf333d887c0) | ![ComfyUI_temp_otckr_00026_](https://github.com/user-attachments/assets/d62e2ff7-d561-42d6-b79a-f625ff5b0b67)
 
-
-![ComfyUI_temp_otckr_00011_ (3)](https://github.com/user-attachments/assets/4acdc9a9-f7eb-4c1a-b199-fce1ac6497ba) | ![ComfyUI_temp_otckr_00014_ (4)](https://github.com/user-attachments/assets/c86da184-cb52-48c9-8582-d896d47bb95b)
 
 
 ### Helix Node
