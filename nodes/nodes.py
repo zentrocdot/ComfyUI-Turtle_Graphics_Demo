@@ -34,12 +34,6 @@ TURTLE = ['turtle', 'arrow', 'blank', 'circle', 'classic', 'square', 'triangle']
 # Define the resize sampler.
 RESIZE_SAMPLER = {"LANCZOS": 1, "BICUBIC": 3, "BILINEAR": 2,
                   "BOX": 4, "HAMMING": 5, "NEAREST": 0}
-#RESIZE_SAMPLER = {"INTER_NEAREST": cv2.INTER_NEAREST,
-#                  "INTER_LINEAR": cv2.INTER_LINEAR,
-#                  "INTER_AREA": cv2.INTER_AREA,
-#                  "INTER_CUBIC": cv2.INTER_CUBIC,
-#                  "INTER_LANCZOS4": cv2.INTER_LANCZOS4,
-#}
 KEYS = list(RESIZE_SAMPLER.keys())
 
 # ******************
@@ -80,48 +74,6 @@ def replace_color(image, replacement_color):
     image[(image == original_col).all(axis = -1)] = replace_col
     # Return new image.
     return image
-
-# ***************************
-# Get closest color function.
-# ***************************
-def get_closest_color(request_color):
-    '''Get the closest color.'''
-    # Initalise the closed color name.
-    closest_color_name = None
-    # Create a new color dictionary.
-    min_colors = {}
-    # Loop over the webcolor names.
-    for key, name in webcolors.CSS3_HEX_TO_NAMES.items():
-        # Get the RGB values from the color.
-        rc, gc, bc = webcolors.hex_to_rgb(key)
-        # Calculate the square of the color value differences.
-        rd = (rc - request_color[0]) ** 2
-        gd = (gc - request_color[1]) ** 2
-        bd = (bc - request_color[2]) ** 2
-        # Add the name and the color value to dictionary.
-        min_colors[(rd + gd + bd)] = name
-    closest_color_name = min_colors[min(min_colors.keys())]
-    # Return the closest color.
-    return closest_color_name
-
-# ************************
-# Get color name function.
-# ************************
-def get_color_name(rgb_tuple):
-    '''Get the color name.'''
-    # Initialise color name.
-    color_name = None
-    # Try to get the color name.
-    try:
-        # Convert RGB to hex.
-        hex_value = webcolors.rgb_to_hex(rgb_tuple)
-        # Get the color name.
-        color_name = webcolors.hex_to_name(hex_value)
-    except ValueError:
-        # If exact match could not be found, find the closest color.
-        color_name = get_closest_color(rgb_tuple)
-    # Return the color name.
-    return color_name
 
 # *************
 # Color to rgb.
@@ -167,15 +119,15 @@ def resize_pil_image(image, width, height, sampler):
     h, w, c = image.shape
     print("Dimensions:", h, w, c)
     if h == height and w == width:
+        # Print message.
         print("Image not upscaled ...")
-        # Return Image.
+        # Return the image.
         return image
-    # Numpy to Pil
+    # Numpy array to Pil image.
     image = Image.fromarray(image)
     # Resize Pil image.
     pil_image = image.resize((width, height), resample=sampler)
-    #image = cv2.resize(image, dsize=(width, height), interpolation=sampler)
-    # Pil to Numpy.
+    # Pil image to Numpy array.
     image = np.array(pil_image)
     # Return Image.
     return image
@@ -215,7 +167,7 @@ class TurtleGraphicsCircleDemo:
         '''Define the input types.'''
         return {
             "required": {
-                "thickness": ("INT", {"default": 1, "min": 1, "max": 1024}),
+                "thickness": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 100000.0, "step": 0.1}),
                 "turtle_speed": ("INT", {"default": 0, "min": 0, "max": 10}),
                 "number_rotations": ("INT", {"default": 36, "min": 1, "max": 1024}),
                 "circle_radius": ("INT", {"default": 120, "min": 1, "max": 1024}),
@@ -324,8 +276,11 @@ class TurtleGraphicsCircleDemo:
                 root.quit()
             else:
                 turtle.exitonclick()
-                turtle.done()
-                turtle.mainloop()
+                try:
+                    turtle.done()
+                    turtle.mainloop()
+                except:
+                    pass
         except Exception as err:
             if str(type(err)) == "<class 'turtle.Terminator'>":
                 print("ERROR:", "turtle.Terminator")
@@ -381,7 +336,7 @@ class TurtleGraphicsHelixDemo:
         '''Define the input types.'''
         return {
             "required": {
-                "thickness": ("INT", {"default": 1, "min": 1, "max": 256}),
+                "thickness": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 100000.0, "step": 0.1}),
                 "turtle_speed": ("INT", {"default": 0, "min": 0, "max": 10}),
                 "max_length": ("INT", {"default": 340, "min": 1, "max": 2048}),
                 "angle": ("INT", {"default": 59, "min": 1, "max": 2048}),
@@ -488,8 +443,11 @@ class TurtleGraphicsHelixDemo:
                 root.quit()
             else:
                 turtle.exitonclick()
-                turtle.done()
-                turtle.mainloop()
+                try:
+                    turtle.done()
+                    turtle.mainloop()
+                except:
+                    pass
         except Exception as err:
             if str(type(err)) == "<class 'turtle.Terminator'>":
                 print("ERROR:", "turtle.Terminator")
@@ -544,7 +502,7 @@ class TurtleGraphicsSpiralDemo:
         '''Define the input types.'''
         return {
             "required": {
-                "thickness": ("INT", {"default": 1, "min": 1, "max": 256}),
+                "thickness": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 100000.0, "step": 0.1}),
                 "turtle_speed": ("INT", {"default": 0, "min": 0, "max": 10}),
                 "number_lobes": ("INT", {"default": 5, "min": 1, "max": 2048}),
                 "number_circles": ("INT", {"default": 28, "min": 1, "max": 2048}),
@@ -662,8 +620,11 @@ class TurtleGraphicsSpiralDemo:
                 root.quit()
             else:
                 turtle.exitonclick()
-                turtle.done()
-                turtle.mainloop()
+                try:
+                    turtle.done()
+                    turtle.mainloop()
+                except:
+                    pass
         except Exception as err:
             if str(type(err)) == "<class 'turtle.Terminator'>":
                 print("ERROR:", "turtle.Terminator")
@@ -718,7 +679,7 @@ class TurtleGraphicsSpuareDemo:
         '''Define the input types.'''
         return {
             "required": {
-                "thickness": ("INT", {"default": 1, "min": 1, "max": 256}),
+                "thickness": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 100000.0, "step": 0.1}),
                 "turtle_speed": ("INT", {"default": 0, "min": 0, "max": 10}),
                 "number_rotations": ("INT", {"default": 80, "min": 1, "max": 2048}),
                 "start_length": ("INT", {"default": 10, "min": 0, "max": 2048}),
@@ -838,8 +799,11 @@ class TurtleGraphicsSpuareDemo:
                 root.quit()
             else:
                 turtle.exitonclick()
-                turtle.done()
-                turtle.mainloop()
+                try:
+                    turtle.done()
+                    turtle.mainloop()
+                except:
+                    pass
         except Exception as err:
             if str(type(err)) == "<class 'turtle.Terminator'>":
                 print("ERROR:", "turtle.Terminator")
@@ -877,6 +841,30 @@ class TurtleGraphicsSpuareDemo:
         # Return the return types.
         return (image,)
 
+COLOR_STRING = "white, whitesmoke, snow, seashell, cornsilk, azure, " + \
+               "aliceblue, antiquewhite, ivory, honeydew, mistyrose, " + \
+               "lightyellow, lemonchiffon, beige, moccasin, navajowhite, " + \
+               "linen, mintcream, khaki, darkkhaki, tan, peru, burlywood, " + \
+               "peachpuff, papayawhip, beige, bisque, wheat, " + \
+               "lightgoldenrodyellow, yellow, orange, orangered, " + \
+               "darkorange, gold, darkgoldenrod, chocolate, " + \
+               "lightpink, pink, orchid, darkorchid, palevioletred, " + \
+               "hotpink, magenta, darkmagenta, salmon, darksalmon, " + \
+               "coral, lightcoral, rosybrown, tomato, indianred, red, " + \
+               "firebrick, maroon, deeppink, crimson, darkred, brown, " + \
+               "sienna, greenyellow, chartreuse, lawngreen, " + \
+               "mediumspringgreen, mediumaquamarine, palegreen, " + \
+               "mediumaquamarine, yellowgreen, olivedrab, olive, " + \
+               "forestgreen, lime, limegreen, springgreen, chartreuse, " + \
+               "darkseagreen, darkslategray, lightgray, dimgray, gray, " + \
+               "lightslategrey, slategray, silver, lightsteelblue, " + \
+               "darkcyan, darkslateblue, blanchedalmond, turquoise, " + \
+               "paleturquoise, cadetblue, aquamarine, aqua, cyan, darkcyan, " + \
+               "lightcyan, lavender, skyblue, royalblue, deepskyblue, " + \
+               "dodgerblue, thistle, teal, violet, blueviolet, purple, " + \
+               "rebeccapurple, indigo, blue, cornflowerblue, mediumblue, " + \
+               "navy, midnightblue, darkblue"
+
 # *********************************
 # Class TurtleGraphicsPropellerDemo
 # *********************************
@@ -896,7 +884,7 @@ class TurtleGraphicsPropellerDemo:
         '''Define the input types.'''
         return {
             "required": {
-                "thickness": ("FLOAT", {"default": 0.1, "min": 0.1, "max": 256.0, "step": 0.1}),
+                "thickness": ("FLOAT", {"default": 0.1, "min": 0.1, "max": 100000.0, "step": 0.1}),
                 "turtle_speed": ("INT", {"default": 0, "min": 0, "max": 10}),
                 "number_rotations": ("INT", {"default": 375, "min": 1, "max": 2048}),
                 "angle": ("FLOAT", {"default": 99.5, "min": 0.0, "max": 360.0}),
@@ -906,7 +894,7 @@ class TurtleGraphicsPropellerDemo:
                 "fill_on_off": ("BOOLEAN", {"default": False, "label_on": "on", "label_off": "off"}),
                 "replace_on_off": ("BOOLEAN", {"default": False, "label_on": "on", "label_off": "off"}),
                 "remove_on_off": ("BOOLEAN", {"default": False, "label_on": "on", "label_off": "off"}),
-                "fg_color": ("STRING", {"multiline": True, "default": "red, green, blue, yellow, cyan, magenta"}),
+                "fg_color": ("STRING", {"multiline": True, "default": COLOR_STRING}),
                 "pen_color": ("STRING", {"multiline": False, "default": "red"}),
                 "fill_color": ("STRING", {"multiline": False, "default": "blue"}),
                 "replacement_color": ("STRING", {"multiline": False, "default": "black"}),
@@ -947,6 +935,7 @@ class TurtleGraphicsPropellerDemo:
             # Set title and background color.
             turtle.title('Object-Oriented Turtle Demo')
             # Clear the screen.
+            turtle.clear()
             turtle.clearscreen()
             turtle.bgcolor(screen_color)
             # Withdraw window.
@@ -977,19 +966,14 @@ class TurtleGraphicsPropellerDemo:
             # Run a loop.
             # ------------------------------------
             idx = 0
-            col = 0
             fac = number_rotations // col_len
             ts.left(start_angle)
-            for x in range(0, number_rotations):
-                #idx = c
-                ts.pencolor(fg_color[col])
+            for x in range(1, number_rotations):
+                idx = int((x/fac))
+                if idx < col_len:
+                    ts.pencolor(fg_color[idx])
                 ts.forward(x)
                 ts.right(angle)
-                if idx <= fac:
-                    idx += 1
-                else:
-                    col += 1
-                    idx = 0
             # ------------------------------------
             # End of loop.
             # ------------------------------------
@@ -1012,8 +996,11 @@ class TurtleGraphicsPropellerDemo:
                 root.quit()
             else:
                 turtle.exitonclick()
-                turtle.done()
-                turtle.mainloop()
+                try:
+                    turtle.done()
+                    turtle.mainloop()
+                except:
+                    pass
         except Exception as err:
             if str(type(err)) == "<class 'turtle.Terminator'>":
                 print("ERROR:", "turtle.Terminator")
