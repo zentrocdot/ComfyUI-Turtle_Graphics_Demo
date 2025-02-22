@@ -70,7 +70,7 @@ The node settings are largely self-explanatory. Accordingly, I am currently only
 
 ![image](https://github.com/user-attachments/assets/c45793e2-bb84-481c-a7b8-d3c155236783)
 
-*Figure 1: Turtle Graphics Square Demo*
+*Figure 1: Turtle Graphics Squares Demo*
 
 ### Graphics Examples
 
@@ -80,12 +80,11 @@ Row 1 | ![ComfyUI_temp_otckr_00021_](https://github.com/user-attachments/assets/
 Row 2 | ![ComfyUI_temp_otckr_00009_ (2)](https://github.com/user-attachments/assets/8ea38ed5-aaad-421a-86cb-cfc1cebe9a80) | ![ComfyUI_temp_otckr_00029_](https://github.com/user-attachments/assets/05e5340f-3653-40cc-bc53-9a14e44d366d) | ![ComfyUI_temp_otckr_00040_](https://github.com/user-attachments/assets/22fc1d80-6b72-4464-ae84-8e44dc7ad81f)
 Row 3 | ![ComfyUI_temp_otckr_00011_ (4)](https://github.com/user-attachments/assets/6b7bdd90-3fae-4354-b16c-a728386028c7) | ![ComfyUI_temp_otckr_00022_](https://github.com/user-attachments/assets/aa7b63e4-08cb-4e01-845a-baf333d887c0) | ![ComfyUI_temp_otckr_00026_](https://github.com/user-attachments/assets/d62e2ff7-d561-42d6-b79a-f625ff5b0b67)
 
-
-### Helix Node
+### Turtle Graphics Spiral Demo Node
 
 ![image](https://github.com/user-attachments/assets/63fbd8ad-b69e-4745-a13e-b1ffb24ecb07)
 
-*Figure 2: Turtle Graphics Helix Demo*
+*Figure 2: Turtle Graphics Spiral Demo*
 
  📎     | Column 1            | Column 2         |   Column 3  
 :----: | :-------------------------: | :-------------------------: | :----------------------------------:
