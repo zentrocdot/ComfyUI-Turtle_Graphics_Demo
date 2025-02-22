@@ -274,12 +274,23 @@ Row 3 | ![ComfyUI_temp_tvbxm_00010_ (1)](https://github.com/user-attachments/ass
 
 Graphic specific settings are:
 
-to do ..
-
 #### Pseudo Code
 
-to do ...
+Following pseudo code describes the movement of the turtle on the screen.
 
+<pre>
+number_rotations = 370
+angle = 95°
+
+LOOP FOR i FROM 1 TO number_rotations STEP 1
+    MOVE TURTLE FORWARD (i)
+    ROTATE TURTLE RIGHT (angle)
+END LOOP
+</pre>
+
+ ![image](https://github.com/user-attachments/assets/72975c1b-a54b-41d2-8536-de2bfc7022b2)
+         
+ 
 #### Graphics Examples 
 
  📎     | Column 1            | Column 2         |   Column 3  
