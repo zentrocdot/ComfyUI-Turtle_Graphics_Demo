@@ -166,9 +166,9 @@ the movement of the turtle on the screen.</p>
 <pre>
 angle = 0°
 increment_angle = 15°    
-start_length = 10
-length = start_length
-number_rotations = 40
+length = 10
+increment_length = 2
+number_rotations = 80
 
 LOOP FOR i FROM 1 TO number_rotations STEP 1
     LOOP FOR j FROM 1 TO 4 STEP 1 
@@ -180,6 +180,9 @@ LOOP FOR i FROM 1 TO number_rotations STEP 1
     length = length + increment_length
 END LOOP
 </pre>
+
+![image](https://github.com/user-attachments/assets/8a16fdcd-0f90-44a9-a1eb-c440675daa0c)
+
 
 ### Graphics Examples
 
