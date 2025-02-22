@@ -160,6 +160,10 @@ Row 3 | ![ComfyUI_00577_](https://github.com/user-attachments/assets/ffe93bbb-22
 
 *Figure 3: Turtle Graphics Squares Demo*
 
+Graphic specific settings are:
+
+to do ..
+
 #### Pseudo Code
 
 <p align="justify">Following pseudo code describes
@@ -188,6 +192,10 @@ The following (colorful) image was created using the pseudo code settings.
 ![image](https://github.com/user-attachments/assets/8a16fdcd-0f90-44a9-a1eb-c440675daa0c)
 
 Figure 4: Image created using the pseudo code settings
+
+Graphic specific settings are:
+
+to do ..
 
 ### Graphics Examples
 
@@ -240,6 +248,14 @@ node. The settings for the graphics are fully parameterised.</p>
 
 *Figure 6: Turtle Graphics Circle Lobes Demo*
 
+Graphic specific settings are:
+
+to do ..
+
+#### Pseudo Code
+
+to do ...
+
 #### Graphics Examples
 
   📎     | Column 1            | Column 2         |   Column 3  
@@ -255,6 +271,10 @@ Row 3 | ![ComfyUI_temp_tvbxm_00010_ (1)](https://github.com/user-attachments/ass
 ![image](https://github.com/user-attachments/assets/cf429848-f707-4e31-91be-6c5375c9cfc9)
 
 *Figure 7: Turtle Graphics Concate Lines Demo*
+
+Graphic specific settings are:
+
+to do ..
 
 #### Pseudo Code
 
