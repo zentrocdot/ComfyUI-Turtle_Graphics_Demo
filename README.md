@@ -84,6 +84,53 @@ the image. This can also be set in the node.</p>
 <p align="justify">The node settings are largely self-explanatory.
 Accordingly, I am currently only providing a few comments.</p>
 
+### Turtle Graphics Circles Demo Node
+
+#### Node Preview     
+
+<p align="justify">Figure 1 shows a preview of the Turtle Graphics Circles Demo Node.</p>
+
+![image](https://github.com/user-attachments/assets/faeb7fbd-e715-4a50-8116-1e39b7846d8d)
+
+*Figure 1: Turtle Graphics Circles Demo node*
+
+Graphic specific settings are:
+
++ circle_radius
++ number_rotations
++ rotation_angle
++ start_angle
+
+#### Pseudo Code
+
+<p align="justify">Following pseudo code describes
+the movement of the turtle (in a loop) on the screen.</p>
+
+<pre>
+number_rotations = 36
+circle_radius = 100
+increment_angle = 10°
+
+LOOP FOR i FROM 0 TO number_rotations STEP 1
+    DRAW CIRCLE (circle_radius)
+    ROTATE TURTLE RIGHT (increment_angle)
+END LOOP
+</pre>
+
+![ComfyUI_00622_](https://github.com/user-attachments/assets/1a5915cb-5414-40ff-8ef1-fcc6e5dccade)
+
+*Figure 1: Image created using the pseudo code settings*
+
+#### Graphics Examples
+
+<p align="justify">Following images are drawn with the Turtle Graphics Circles demo node.</p>
+
+  📎     | Column 1            | Column 2         |   Column 3  
+:----: | :-------------------------: | :-------------------------: | :----------------------------------:
+Row 1 | ![ComfyUI_00623_](https://github.com/user-attachments/assets/0a07b341-87e3-4f96-bbe2-a9dc46b7f8d7) | ![ComfyUI_temp_otckr_00032_](https://github.com/user-attachments/assets/412b17e0-63e2-42c2-b522-e27eff587049) | ![ComfyUI_temp_otckr_00034_](https://github.com/user-attachments/assets/5701d9a3-ce5f-4e99-acad-ef6af2ba044a)
+Row 2 | ![ComfyUI_00567_](https://github.com/user-attachments/assets/f7430d8c-40f9-4a54-b618-6cd01c008366) | ![ComfyUI_00568_](https://github.com/user-attachments/assets/24673789-8419-4819-af23-0df8295a1f6b) | ![ComfyUI_00572_](https://github.com/user-attachments/assets/1d0a243b-5880-43e9-a5a9-7b767fc7bd04)
+Row 3 | ![ComfyUI_00577_](https://github.com/user-attachments/assets/ffe93bbb-2247-4945-b74e-ae18b70e7479) | ![ComfyUI_00579_](https://github.com/user-attachments/assets/68e3a0e5-7690-46f9-ace9-5c2cd5fa72f6) | ![ComfyUI_00593_](https://github.com/user-attachments/assets/85e19ab0-032c-45f4-9609-ad22777359e1)
+
 ## Turtle Graphics Squares Demo
 
 ### Node Preview
@@ -112,48 +159,7 @@ Row 1 | ![ComfyUI_temp_otckr_00002_ (4)](https://github.com/user-attachments/ass
 Row 2 | ![ComfyUI_temp_otckr_00027_](https://github.com/user-attachments/assets/dfe7fedd-6cea-4725-9e0b-fe443b24db16) | ![ComfyUI_temp_otckr_00005_ (10)](https://github.com/user-attachments/assets/12786dce-22bb-419b-b766-5fa0126ab304) | ![ComfyUI_temp_otckr_00028_](https://github.com/user-attachments/assets/b5ef6459-3dcb-4f8e-a133-16fbbdfbcef7)
 Row 3 | ![ComfyUI_00609_](https://github.com/user-attachments/assets/d3346d66-0cf8-4e33-b145-b2c77f7d3919) | ![ComfyUI_00605_](https://github.com/user-attachments/assets/ab666638-2332-46cb-ba46-920386f94740) | ![ComfyUI_00621_](https://github.com/user-attachments/assets/5842e885-ccdd-47be-a87c-16e0df2d424f)
 
-### Turtle Graphics Circles Demo Node
 
-#### Node Preview     
-
-<p align="justify">Figure 3 shows a preview of the Turtle Graphics Circles Demo Node.</p>
-
-![image](https://github.com/user-attachments/assets/faeb7fbd-e715-4a50-8116-1e39b7846d8d)
-
-*Figure 3: Turtle Graphics Circles Demo node*
-
-Graphic specific settings are:
-
-+ circle_radius
-+ number_rotations
-+ rotation_angle
-+ start_angle
-
-#### Pseudo Code
-
-<p align="justify">Following pseudo code describes
-the movement of the turtle (in a loop) on the screen.</p>
-
-<pre>
-number_rotations = 36
-circle_radius = 100
-increment_angle = 10°
-
-LOOP FOR i FROM 0 TO number_rotations STEP 1
-    DRAW CIRCLE (circle_radius)
-    ROTATE TURTLE RIGHT (increment_angle)
-END LOOP
-</pre>
-
-#### Graphics Examples
-
-<p align="justify">Following images are drawn with the Turtle Graphics Circles demo node.</p>
-
-  📎     | Column 1            | Column 2         |   Column 3  
-:----: | :-------------------------: | :-------------------------: | :----------------------------------:
-Row 1 | ![ComfyUI_temp_otckr_00030_](https://github.com/user-attachments/assets/d78b51bf-0efb-4c8b-a885-e4fc4e6fbc90) | ![ComfyUI_temp_otckr_00032_](https://github.com/user-attachments/assets/412b17e0-63e2-42c2-b522-e27eff587049) | ![ComfyUI_temp_otckr_00034_](https://github.com/user-attachments/assets/5701d9a3-ce5f-4e99-acad-ef6af2ba044a)
-Row 2 | ![ComfyUI_00567_](https://github.com/user-attachments/assets/f7430d8c-40f9-4a54-b618-6cd01c008366) | ![ComfyUI_00568_](https://github.com/user-attachments/assets/24673789-8419-4819-af23-0df8295a1f6b) | ![ComfyUI_00572_](https://github.com/user-attachments/assets/1d0a243b-5880-43e9-a5a9-7b767fc7bd04)
-Row 3 | ![ComfyUI_00577_](https://github.com/user-attachments/assets/ffe93bbb-2247-4945-b74e-ae18b70e7479) | ![ComfyUI_00579_](https://github.com/user-attachments/assets/68e3a0e5-7690-46f9-ace9-5c2cd5fa72f6) | ![ComfyUI_00593_](https://github.com/user-attachments/assets/85e19ab0-032c-45f4-9609-ad22777359e1)
 
 ### Turtle Graphics Circle Lobes Demo Node 
 
