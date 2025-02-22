@@ -117,6 +117,8 @@ LOOP FOR i FROM 0 TO number_rotations STEP 1
 END LOOP
 </pre>
 
+<p align="justify">The following (colorful) image was created using the pseudo code settings.</p>
+
 ![ComfyUI_00622_](https://github.com/user-attachments/assets/1a5915cb-5414-40ff-8ef1-fcc6e5dccade)
 
 *Figure 1: Image created using the pseudo code settings*
