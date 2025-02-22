@@ -147,7 +147,11 @@ Row 3 | ![ComfyUI_00556_](https://github.com/user-attachments/assets/3247fa60-a5
   📎     | Turtle Graphics           | QR Code                     |   AI Image  
 :----: | :-------------------------: | :-------------------------: | :-------------------------:
 Images | ![ComfyUI_temp_voxnf_00024_](https://github.com/user-attachments/assets/7b124883-d324-481e-9275-d88034f07101) | ![ComfyUI_temp_mzxdj_00009_](https://github.com/user-attachments/assets/1193ebc7-988f-4541-bbd9-3a790bad1e9b)
- | ![ComfyUI_00528_](https://github.com/user-attachments/assets/61950ca6-5c58-46c4-ba61-83837e6c3783)
+ | ![image](https://github.com/user-attachments/assets/663965d3-965d-4cd2-a1f5-66fed257abcb)
+
+ 
+ 
+ ![ComfyUI_00528_](https://github.com/user-attachments/assets/61950ca6-5c58-46c4-ba61-83837e6c3783)
 
 ## Known Problems
 
