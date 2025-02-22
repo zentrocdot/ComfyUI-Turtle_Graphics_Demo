@@ -102,19 +102,16 @@ Row 2 | ![ComfyUI_temp_otckr_00027_](https://github.com/user-attachments/assets/
 :----: | :-------------------------: | :-------------------------: | :----------------------------------:
 Row 1 | ![ComfyUI_temp_otckr_00030_](https://github.com/user-attachments/assets/d78b51bf-0efb-4c8b-a885-e4fc4e6fbc90) | ![ComfyUI_temp_otckr_00032_](https://github.com/user-attachments/assets/412b17e0-63e2-42c2-b522-e27eff587049) | ![ComfyUI_temp_otckr_00034_](https://github.com/user-attachments/assets/5701d9a3-ce5f-4e99-acad-ef6af2ba044a)
 
-### Spiral Node 
+### Turtle Graphics Circle Lobes Demo Node 
 
 #### Node Preview
 
-<p align="justify">Figure 1 shows the Turtle Graphics Spiral Demo 
+<p align="justify">Figure 1 shows the Turtle Graphics Circle Lobes Demo  
 node. The settings for the graphics are fully parameterised.</p> 
 
 ![image](https://github.com/user-attachments/assets/d39e57b6-1b57-4032-bd29-d5b354c8255b)
 
-
-![image](https://github.com/user-attachments/assets/9d315296-cd2f-439d-afae-aa740b8653b8)
-
-*Figure 4: Turtle Graphics Spiral Demo*
+*Figure 4: Turtle Graphics Circle Lobes Demo*
 
 #### Graphics Examples
 
@@ -131,7 +128,7 @@ Row 3 | ![ComfyUI_temp_tvbxm_00010_ (1)](https://github.com/user-attachments/ass
 
 ![image](https://github.com/user-attachments/assets/cf429848-f707-4e31-91be-6c5375c9cfc9)
 
-*Figure 4: Turtle Graphics Spiral Demo*
+*Figure 4: Turtle Graphics Concate Lines Demo*
 
 #### Graphics Examples 
 
