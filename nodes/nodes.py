@@ -13,6 +13,7 @@
 # pylint: disable=too-many-branches
 # pylint: disable=protected-access
 # pylint: disable=too-many-lines
+# pylint: disable=unused-variable
 
 # Import the standard Python modules.
 import re
@@ -27,6 +28,9 @@ import webcolors
 import cv2
 import numpy as np
 from PIL import Image
+
+# Set some constants.
+TURTLE_TITLE = "Object-Oriented Turtle Demo"
 
 # Set the shape of the turtle.
 TURTLE = ['turtle', 'arrow', 'blank', 'circle', 'classic', 'square', 'triangle']
@@ -117,7 +121,7 @@ def string2tuple(color_string):
 def resize_pil_image(image, width, height, sampler):
     '''Resize Pil image.'''
     h, w, c = image.shape
-    print("Dimensions:", h, w, c)
+    #print("Dimensions:", h, w, c)
     if h == height and w == width:
         # Print message.
         print("Image not upscaled ...")
@@ -148,10 +152,10 @@ def pil2tensor(image):
     # Return tensor.
     return torch.from_numpy(np.array(image).astype(np.float32) / 255.0).unsqueeze(0)
 
-# ******************************
-# Class TurtleGraphicsCircleDemo
-# ******************************
-class TurtleGraphicsCircleDemo:
+# *******************************
+# Class TurtleGraphicsCirclesDemo
+# *******************************
+class TurtleGraphicsCirclesDemo:
     '''Create a Turtle Graphics circle demo.'''
 
     @classmethod
@@ -218,7 +222,7 @@ class TurtleGraphicsCircleDemo:
             sc = turtle.Screen()
             sc.setup(screen_x, screen_y)
             # Set title and background color.
-            turtle.title('Object-Oriented Turtle Demo')
+            turtle.title(TURTLE_TITLE)
             # Clear the screen.
             turtle.clearscreen()
             turtle.bgcolor(screen_color)
@@ -276,6 +280,7 @@ class TurtleGraphicsCircleDemo:
                 root.quit()
             else:
                 turtle.exitonclick()
+                # Catch error on closing.
                 try:
                     turtle.done()
                     turtle.mainloop()
@@ -317,10 +322,10 @@ class TurtleGraphicsCircleDemo:
         # Return the return types.
         return (image,)
 
-# *****************************
-# Class TurtleGraphicsHelixDemo
-# *****************************
-class TurtleGraphicsHelixDemo:
+# ******************************
+# Class TurtleGraphicsSpiralDemo
+# ******************************
+class TurtleGraphicsSpiralDemo:
     '''Create a Turtle Graphics circle demo.'''
 
     @classmethod
@@ -338,7 +343,7 @@ class TurtleGraphicsHelixDemo:
             "required": {
                 "thickness": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 100000.0, "step": 0.1}),
                 "turtle_speed": ("INT", {"default": 0, "min": 0, "max": 10}),
-                "max_length": ("INT", {"default": 340, "min": 1, "max": 2048}),
+                "max_length": ("INT", {"default": 270, "min": 1, "max": 2048}),
                 "angle": ("INT", {"default": 59, "min": 1, "max": 2048}),
                 "start_angle": ("INT", {"default": 0, "min": 0, "max": 2048}),
                 "shape": (TURTLE, {}),
@@ -385,7 +390,7 @@ class TurtleGraphicsHelixDemo:
             sc = turtle.Screen()
             sc.setup(screen_x, screen_y)
             # Set title and background color.
-            turtle.title('Object-Oriented Turtle Demo')
+            turtle.title(TURTLE_TITLE)
             # Clear the screen.
             turtle.clearscreen()
             turtle.bgcolor(screen_color)
@@ -443,6 +448,7 @@ class TurtleGraphicsHelixDemo:
                 root.quit()
             else:
                 turtle.exitonclick()
+                # Catch error on closing.
                 try:
                     turtle.done()
                     turtle.mainloop()
@@ -483,10 +489,10 @@ class TurtleGraphicsHelixDemo:
         # Return the return types.
         return (image,)
 
-# ******************************
-# Class TurtleGraphicsSpiralDemo
-# ******************************
-class TurtleGraphicsSpiralDemo:
+# *****************************************
+# Class TurtleGraphicsCircleLobesSpiralDemo
+# *****************************************
+class TurtleGraphicsCircleLobesDemo:
     '''Create a Turtle Graphics circle demo.'''
 
     @classmethod
@@ -506,7 +512,7 @@ class TurtleGraphicsSpiralDemo:
                 "turtle_speed": ("INT", {"default": 0, "min": 0, "max": 10}),
                 "number_lobes": ("INT", {"default": 5, "min": 1, "max": 2048}),
                 "number_circles": ("INT", {"default": 28, "min": 1, "max": 2048}),
-                "start_radius": ("INT", {"default": 8, "min": 1, "max": 2048}),
+                "start_radius": ("INT", {"default": 5, "min": 1, "max": 2048}),
                 "start_angle": ("INT", {"default": 45, "min": 0, "max": 360}),
                 "increment_angle": ("INT", {"default": 0, "min": 0, "max": 360}),
                 "scale": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 100.0}),
@@ -556,7 +562,7 @@ class TurtleGraphicsSpiralDemo:
             sc = turtle.Screen()
             sc.setup(screen_x, screen_y)
             # Set title and background color.
-            turtle.title('Object-Oriented Turtle Demo')
+            turtle.title(TURTLE_TITLE)
             # Clear the screen.
             turtle.clearscreen()
             turtle.bgcolor(screen_color)
@@ -620,6 +626,7 @@ class TurtleGraphicsSpiralDemo:
                 root.quit()
             else:
                 turtle.exitonclick()
+                # Catch error on closing.
                 try:
                     turtle.done()
                     turtle.mainloop()
@@ -660,10 +667,10 @@ class TurtleGraphicsSpiralDemo:
         # Return the return types.
         return (image,)
 
-# ******************************
-# Class TurtleGraphicsSpuareDemo
-# ******************************
-class TurtleGraphicsSpuareDemo:
+# *******************************
+# Class TurtleGraphicsSpuaresDemo
+# *******************************
+class TurtleGraphicsSpuaresDemo:
     '''Create a Turtle Graphics circle demo.'''
 
     @classmethod
@@ -681,9 +688,9 @@ class TurtleGraphicsSpuareDemo:
             "required": {
                 "thickness": ("FLOAT", {"default": 1.0, "min": 0.1, "max": 100000.0, "step": 0.1}),
                 "turtle_speed": ("INT", {"default": 0, "min": 0, "max": 10}),
-                "number_rotations": ("INT", {"default": 80, "min": 1, "max": 2048}),
+                "number_rotations": ("INT", {"default": 84, "min": 1, "max": 2048}),
                 "start_length": ("INT", {"default": 10, "min": 0, "max": 2048}),
-                "increment_length": ("INT", {"default": 5, "min": 0, "max": 2048}),
+                "increment_length": ("INT", {"default": 2, "min": 0, "max": 2048}),
                 "angle": ("FLOAT", {"default": 5.0, "min": 0.0, "max": 360.0}),
                 "increment_angle": ("FLOAT", {"default": 5.0, "min": 0.0, "max": 360.0}),
                 "start_angle": ("FLOAT", {"default": 5.0, "min": 0.0, "max": 360.0}),
@@ -733,7 +740,7 @@ class TurtleGraphicsSpuareDemo:
             sc = turtle.Screen()
             sc.setup(screen_x, screen_y)
             # Set title and background color.
-            turtle.title('Object-Oriented Turtle Demo')
+            turtle.title(TURTLE_TITLE)
             # Clear the screen.
             turtle.clearscreen()
             turtle.bgcolor(screen_color)
@@ -799,6 +806,7 @@ class TurtleGraphicsSpuareDemo:
                 root.quit()
             else:
                 turtle.exitonclick()
+                # Catch error on closing.
                 try:
                     turtle.done()
                     turtle.mainloop()
@@ -865,10 +873,10 @@ COLOR_STRING = "white, whitesmoke, snow, seashell, cornsilk, azure, " + \
                "rebeccapurple, indigo, blue, cornflowerblue, mediumblue, " + \
                "navy, midnightblue, darkblue"
 
-# *********************************
-# Class TurtleGraphicsPropellerDemo
-# *********************************
-class TurtleGraphicsPropellerDemo:
+# ************************************
+# Class TurtleGraphicsConcateLinesDemo
+# ************************************
+class TurtleGraphicsConcateLinesDemo:
     '''Create a Turtle Graphics circle demo.'''
 
     @classmethod
@@ -933,7 +941,7 @@ class TurtleGraphicsPropellerDemo:
             sc = turtle.Screen()
             sc.setup(screen_x, screen_y)
             # Set title and background color.
-            turtle.title('Object-Oriented Turtle Demo')
+            turtle.title(TURTLE_TITLE)
             # Clear the screen.
             turtle.clear()
             turtle.clearscreen()
@@ -996,6 +1004,7 @@ class TurtleGraphicsPropellerDemo:
                 root.quit()
             else:
                 turtle.exitonclick()
+                # Catch error on closing.
                 try:
                     turtle.done()
                     turtle.mainloop()
