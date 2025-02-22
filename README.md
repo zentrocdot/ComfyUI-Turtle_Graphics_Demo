@@ -136,10 +136,6 @@ Row 1 | ![ComfyUI_00532_](https://github.com/user-attachments/assets/b92000cc-ad
 Row 2 | ![ComfyUI_00536_](https://github.com/user-attachments/assets/250ef0d0-fd64-4c17-93b5-0b154b86e88b) | ![ComfyUI_00540_](https://github.com/user-attachments/assets/ab326ec6-f8a4-47ff-8fff-caf9d3ffe20e) | ![ComfyUI_00545_](https://github.com/user-attachments/assets/ada442e1-2579-45b3-adbc-df5bb84eb22a)
 Row 3 | ![ComfyUI_00556_](https://github.com/user-attachments/assets/3247fa60-a514-495c-b599-688cad35aec3) | ![ComfyUI_00557_](https://github.com/user-attachments/assets/5e277ed6-4b3f-4555-ad19-7a3f99de3017) | ![ComfyUI_00561_](https://github.com/user-attachments/assets/713bafee-595a-4756-b1d2-702e40964d65)
 
-
-
-
-
 ## Real Life Example
 
 ### Workflow Preview
