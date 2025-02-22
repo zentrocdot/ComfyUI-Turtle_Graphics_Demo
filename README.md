@@ -154,6 +154,8 @@ Row 3 | ![ComfyUI_00577_](https://github.com/user-attachments/assets/ffe93bbb-22
 
 ### Node Preview
 
+<p align="justify">Figure 1 shows a preview of the Turtle Graphics Circles Demo Node.</p>
+
 ![image](https://github.com/user-attachments/assets/c45793e2-bb84-481c-a7b8-d3c155236783)
 
 *Figure 1: Turtle Graphics Squares Demo*
@@ -183,6 +185,7 @@ END LOOP
 
 ![image](https://github.com/user-attachments/assets/8a16fdcd-0f90-44a9-a1eb-c440675daa0c)
 
+Figure 2: Image created using the pseudo code settings
 
 ### Graphics Examples
 
