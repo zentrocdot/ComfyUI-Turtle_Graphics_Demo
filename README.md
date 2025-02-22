@@ -176,14 +176,23 @@ ComfyUI.</p>
 
 ## Open Questions
 
-In real-life use of the node, a few questions have arisen that require clarification. As 
-long as I am using a square format the resulting image is with or without upscaling in his
-quality good. I used a landscape format and the image became blurry. It became even more 
-blurred by changing the background.
+<p align="justify">In real-life use of the node, a few questions
+have arisen that require clarification. As long as I am using a
+square format the resulting image is with or without upscaling in
+his quality good. I used a landscape format and the image became 
+blurry. It became even more blurred by changing the background.</p>
 
 ## Open Issues
 
-Opening and closing of a Turtle Graphics window or start and stop of a Turtle Graphics object is not working as expected.
+<p align="justify">Opening and closing of a Turtle Graphics 
+window or start and stop of a Turtle Graphics object is not
+working as expected.</p>
+
+## To-Do
+
+<p align="justify">I need nodes where I can move the 
+starting point of the Turtle Graphics from the center 
+of the drawing area by offset values for x and y.</p>
 
 # References
 
