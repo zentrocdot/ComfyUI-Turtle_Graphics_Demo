@@ -292,6 +292,14 @@ Row 3 | ![ComfyUI_00556_](https://github.com/user-attachments/assets/3247fa60-a5
 
 ### Workflow Preview
 
+<p align="justify">Please note that this is a example, which
+might not be working. Creating such colorful and working QR 
+Codes need some fine tuning. The Difference in contrast between
+forground color and background color must be 20 % in difference.
+One needs for compositing an image which fulfills this. This can 
+be reached by try and error. If a QR code scanner is reading the 
+created image it works, otherwise not.</p>
+
 ![image](https://github.com/user-attachments/assets/047ef65d-6c86-4002-9b81-1e70e1b4ef8e)
 
 ### Example Images
