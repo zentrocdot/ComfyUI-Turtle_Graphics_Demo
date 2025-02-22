@@ -3,11 +3,11 @@ from .nodes.nodes import *
 
 # Define the node class mappings.
 NODE_CLASS_MAPPINGS = {
+    "🪲 Turtle Graphics Circles Demo": TurtleGraphicsCirclesDemo,
+    "🪲 Turtle Graphics Circle Lobes Demo": TurtleGraphicsCircleLobesDemo,  
+    "🪲 Turtle Graphics Squares Demo": TurtleGraphicsSpuaresDemo,
     "🪲 Turtle Graphics Spiral Demo": TurtleGraphicsSpiralDemo,
-    "🪲 Turtle Graphics Circle Demo": TurtleGraphicsCircleDemo,
-    "🪲 Turtle Graphics Helix Demo": TurtleGraphicsHelixDemo,
-    "🪲 Turtle Graphics Square Demo": TurtleGraphicsSpuareDemo,
-    "🪲 Turtle Graphics Propeller Demo": TurtleGraphicsPropellerDemo,
+    "🪲 Turtle Graphics Concate Lines Demo": TurtleGraphicsConcateLinesDemo,
     }
 
 WEB_DIRECTORY = "./js"
