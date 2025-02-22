@@ -114,6 +114,12 @@ Row 3 | ![ComfyUI_00609_](https://github.com/user-attachments/assets/d3346d66-0c
 
 ### Turtle Graphics Circles Demo Node
 
+#### Node preview                
+
+![image](https://github.com/user-attachments/assets/faeb7fbd-e715-4a50-8116-1e39b7846d8d)
+
+*Figure 3: Turtle Graphics Circles Demo node*
+
 #### Pseudo Code
 
 <pre>
@@ -126,12 +132,6 @@ LOOP FOR i FROM 0 TO number_rotations STEP 1
     ROTATE TURTLE RIGHT (increment_angle)
 END LOOP
 </pre>
-
-#### Node preview                
-
-![image](https://github.com/user-attachments/assets/faeb7fbd-e715-4a50-8116-1e39b7846d8d)
-
-*Figure 3: Turtle Graphics Circles Demo node*
 
 #### Graphics Examples
 
