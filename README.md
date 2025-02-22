@@ -17,14 +17,15 @@ It has to be noted that Turtle Graphics makes use of the Python package
 Tkinter. In variations of this nodes one can think about different cases
 where Turtle Graphics or/and Tkinter can be used.</p>
 
-<p align="justify">As part of the development I could show that it is not
-necessary to save and load a Turtle Graphics for the later use. A canvas
-created by Turtle Graphics can be streamed so it can be used as Pil image.</p> 
+<p align="justify">As part of the development I could show that it is 
+not necessary to save and load a Turtle Graphics for the later use. A
+canvas created by Turtle Graphics can be streamed so it can be used as 
+Pil image.</p> 
 
-<p align="justify">The background of a Turtle Graphics image is by default
-white. This is completely independent from the background of the screen where 
-the graphics is drawn. By use of Numpy this white background can be removed
-with a background of personal choice.</p> 
+<p align="justify">The background of a Turtle Graphics image is by 
+default white. This is completely independent from the background of 
+the screen where the graphics is drawn. By use of Numpy this white 
+background can be removed with a background of personal choice.</p> 
 
 <p align="justify">If the background is exchanged by a black background 
 it is also possible to remove this background and make the background
@@ -61,7 +62,23 @@ is an implementation of the popular geometric drawing tools introduced
 first in the programming language Logo developed 1967. In computer
 graphics, Turtle Graphics are a special kind of vector graphics using
 a relative cursor, which is called turtle upon a Cartesian co-ordinate 
-system plane with x and y axis.</p>
+system plane with x and y axis. The turtle itself has three attributes, 
+which are the location, the orientation (or direction) and the pen. 
+The pen has attributes too, which are color, width, and down and up 
+state.</p>
+
+## Turtle Graphics Implementations
+
+Implementations of Turtle Graphics in programming languages are:
+
+* Logo
+* Python
+* Scratch
+* Java
+* JavaScript
+* HTML5 Canvas
+* C++
+* Joy
 
 ## Turtle Graphics and Python
 
