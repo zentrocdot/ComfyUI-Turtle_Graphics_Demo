@@ -158,6 +158,29 @@ Row 3 | ![ComfyUI_00577_](https://github.com/user-attachments/assets/ffe93bbb-22
 
 *Figure 1: Turtle Graphics Squares Demo*
 
+#### Pseudo Code
+
+<p align="justify">Following pseudo code describes
+the movement of the turtle on the screen.</p>
+
+<pre>
+angle = 0°
+increment_angle = 15°    
+start_length = 10
+length = start_length
+number_rotations = 40
+
+LOOP FOR i FROM 1 TO number_rotations STEP 1
+    LOOP FOR j FROM 1 TO 4 STEP 1 
+        MOVE TURTLE FORWARD (length)
+        ROTATE TURTLE (90°)
+    END LOOP
+    ROTATE TURTLE LEFT (angle)
+    angle = angle + increment_angle
+    length = length + increment_length
+END LOOP
+</pre>
+
 ### Graphics Examples
 
   📎     | Column 1            | Column 2         |   Column 3  
