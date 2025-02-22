@@ -288,8 +288,10 @@ LOOP FOR i FROM 1 TO number_rotations STEP 1
 END LOOP
 </pre>
 
- ![image](https://github.com/user-attachments/assets/72975c1b-a54b-41d2-8536-de2bfc7022b2)
-         
+The following (colorful) image was created using the pseudo code settings.
+
+![image](https://github.com/user-attachments/assets/73bfd414-0378-462e-b66f-bac18b94ec59)
+
  
 #### Graphics Examples 
 
