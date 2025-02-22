@@ -104,14 +104,19 @@ Row 1 | ![ComfyUI_temp_otckr_00030_](https://github.com/user-attachments/assets/
 
 ### Spiral Node 
 
+#### Node Preview
+
 <p align="justify">Figure 1 shows the Turtle Graphics Spiral Demo 
 node. The settings for the graphics are fully parameterised.</p> 
+
+![image](https://github.com/user-attachments/assets/d39e57b6-1b57-4032-bd29-d5b354c8255b)
+
 
 ![image](https://github.com/user-attachments/assets/9d315296-cd2f-439d-afae-aa740b8653b8)
 
 *Figure 4: Turtle Graphics Spiral Demo*
 
-### Graphics Examples
+#### Graphics Examples
 
   📎     | Column 1            | Column 2         |   Column 3  
 :----: | :-------------------------: | :-------------------------: | :----------------------------------:
