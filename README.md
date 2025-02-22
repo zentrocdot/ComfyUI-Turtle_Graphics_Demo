@@ -199,6 +199,8 @@ Row 3 | ![ComfyUI_temp_otckr_00011_ (4)](https://github.com/user-attachments/ass
 
 ### Turtle Graphics Spiral Demo Node
 
+### Node Preview
+
 ![image](https://github.com/user-attachments/assets/ec1a7d40-29fe-4cd2-8da5-b4b496dd75ce)
 
 *Figure 2: Turtle Graphics Spiral Demo*
@@ -209,7 +211,9 @@ Row 1 | ![ComfyUI_temp_otckr_00002_ (4)](https://github.com/user-attachments/ass
 Row 2 | ![ComfyUI_temp_otckr_00027_](https://github.com/user-attachments/assets/dfe7fedd-6cea-4725-9e0b-fe443b24db16) | ![ComfyUI_temp_otckr_00005_ (10)](https://github.com/user-attachments/assets/12786dce-22bb-419b-b766-5fa0126ab304) | ![ComfyUI_temp_otckr_00028_](https://github.com/user-attachments/assets/b5ef6459-3dcb-4f8e-a133-16fbbdfbcef7)
 Row 3 | ![ComfyUI_00609_](https://github.com/user-attachments/assets/d3346d66-0cf8-4e33-b145-b2c77f7d3919) | ![ComfyUI_00605_](https://github.com/user-attachments/assets/ab666638-2332-46cb-ba46-920386f94740) | ![ComfyUI_00621_](https://github.com/user-attachments/assets/5842e885-ccdd-47be-a87c-16e0df2d424f)
 
+#### Pseudo Code
 
+to do ...
 
 ### Turtle Graphics Circle Lobes Demo Node 
 
@@ -237,6 +241,10 @@ Row 3 | ![ComfyUI_temp_tvbxm_00010_ (1)](https://github.com/user-attachments/ass
 ![image](https://github.com/user-attachments/assets/cf429848-f707-4e31-91be-6c5375c9cfc9)
 
 *Figure 4: Turtle Graphics Concate Lines Demo*
+
+#### Pseudo Code
+
+to do ...
 
 #### Graphics Examples 
 
