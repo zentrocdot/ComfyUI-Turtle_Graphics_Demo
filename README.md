@@ -279,8 +279,8 @@ Graphic specific settings are:
 Following pseudo code describes the movement of the turtle on the screen.
 
 <pre>
-number_rotations = 370
-angle = 95°
+number_rotations = 300
+angle = 75°
 
 LOOP FOR i FROM 1 TO number_rotations STEP 1
     MOVE TURTLE FORWARD (i)
@@ -290,8 +290,7 @@ END LOOP
 
 The following (colorful) image was created using the pseudo code settings.
 
-![image](https://github.com/user-attachments/assets/73bfd414-0378-462e-b66f-bac18b94ec59)
-
+![image](https://github.com/user-attachments/assets/356faf2b-c0f1-4d4c-b1e7-76bfda831655)
  
 #### Graphics Examples 
 
