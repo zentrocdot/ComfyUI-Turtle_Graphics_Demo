@@ -64,11 +64,11 @@ One can decide to let a turtle or another shape drawing the image. This can also
 
 The node settings are largely self-explanatory. Accordingly, I am currently only providing a few comments.
 
-## Turtle Graphics Spiral Demo
+## Turtle Graphics Squares Demo
 
-### Square Node
+### Node Preview
 
-![image](https://github.com/user-attachments/assets/d6a191c8-2e52-4ad1-b571-9847834bc52f)
+![image](https://github.com/user-attachments/assets/c45793e2-bb84-481c-a7b8-d3c155236783)
 
 *Figure 1: Turtle Graphics Square Demo*
 
