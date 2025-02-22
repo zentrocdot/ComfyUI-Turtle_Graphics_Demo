@@ -114,13 +114,25 @@ Row 3 | ![ComfyUI_00609_](https://github.com/user-attachments/assets/d3346d66-0c
 
 ### Turtle Graphics Circles Demo Node
 
-#### Node preview                
+#### Node Preview     
+
+<p align="justify">Figure 3 shows a preview of the Turtle Graphics Circles Demo Node.>/p>
 
 ![image](https://github.com/user-attachments/assets/faeb7fbd-e715-4a50-8116-1e39b7846d8d)
 
 *Figure 3: Turtle Graphics Circles Demo node*
 
+Graphic specific settings are:
+
++ circle_radius
++ number_rotations
++ rotation_angle
++ start_angle
+
 #### Pseudo Code
+
+<p align="justify">Following pseudo code describes
+the movement of the turtle (in a loop) on the screen.</p>
 
 <pre>
 number_rotations = 36
@@ -134,6 +146,8 @@ END LOOP
 </pre>
 
 #### Graphics Examples
+
+<p align="justify">Following images are drawn with the Turtle Graphics Circles demo node.</p>
 
   📎     | Column 1            | Column 2         |   Column 3  
 :----: | :-------------------------: | :-------------------------: | :----------------------------------:
