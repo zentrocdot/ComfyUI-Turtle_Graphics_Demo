@@ -100,6 +100,10 @@ Row 2 | ![ComfyUI_temp_otckr_00027_](https://github.com/user-attachments/assets/
   📎     | Column 1            | Column 2         |   Column 3  
 :----: | :-------------------------: | :-------------------------: | :----------------------------------:
 Row 1 | ![ComfyUI_temp_otckr_00030_](https://github.com/user-attachments/assets/d78b51bf-0efb-4c8b-a885-e4fc4e6fbc90) | ![ComfyUI_temp_otckr_00032_](https://github.com/user-attachments/assets/412b17e0-63e2-42c2-b522-e27eff587049) | ![ComfyUI_temp_otckr_00034_](https://github.com/user-attachments/assets/5701d9a3-ce5f-4e99-acad-ef6af2ba044a)
+Row 2 | ![ComfyUI_00567_](https://github.com/user-attachments/assets/f7430d8c-40f9-4a54-b618-6cd01c008366) | ![ComfyUI_00568_](https://github.com/user-attachments/assets/24673789-8419-4819-af23-0df8295a1f6b) | ![ComfyUI_00572_](https://github.com/user-attachments/assets/1d0a243b-5880-43e9-a5a9-7b767fc7bd04)
+
+
+
 
 ### Turtle Graphics Circle Lobes Demo Node 
 
@@ -148,8 +152,6 @@ Row 3 | ![ComfyUI_00556_](https://github.com/user-attachments/assets/3247fa60-a5
   📎     | Turtle Graphics           | QR Code                     |   AI Image  
 :----: | :-------------------------: | :-------------------------: | :-------------------------:
 Images | ![ComfyUI_temp_voxnf_00024_ (1)](https://github.com/user-attachments/assets/6af4e8ba-3c52-4180-87a3-63b99bf749e7) | ![ComfyUI_temp_mzxdj_00009_](https://github.com/user-attachments/assets/1193ebc7-988f-4541-bbd9-3a790bad1e9b) | ![image](https://github.com/user-attachments/assets/663965d3-965d-4cd2-a1f5-66fed257abcb)
-
- 
 
 ## Known Problems
 
