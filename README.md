@@ -82,7 +82,7 @@ Row 3 | ![ComfyUI_temp_otckr_00011_ (4)](https://github.com/user-attachments/ass
 
 ### Turtle Graphics Spiral Demo Node
 
-![image](https://github.com/user-attachments/assets/63fbd8ad-b69e-4745-a13e-b1ffb24ecb07)
+![image](https://github.com/user-attachments/assets/ec1a7d40-29fe-4cd2-8da5-b4b496dd75ce)
 
 *Figure 2: Turtle Graphics Spiral Demo*
 
