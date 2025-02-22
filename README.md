@@ -128,7 +128,7 @@ Row 3 | ![ComfyUI_temp_tvbxm_00010_ (1)](https://github.com/user-attachments/ass
 
 *Figure 4: Turtle Graphics Spiral Demo*
 
-#### Created Examples 
+#### Graphics Examples 
 
  📎     | Column 1            | Column 2         |   Column 3  
 :----: | :-------------------------: | :-------------------------: | :----------------------------------:
