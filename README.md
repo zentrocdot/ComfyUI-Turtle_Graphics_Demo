@@ -26,9 +26,9 @@ white. This is completely independent from the background of the screen where
 the graphics is drawn. By use of Numpy this white background can be removed
 with a background of personal choice.</p> 
 
-<p align="justify">If the background is exchanged by a black background it
-is also possible to remove this background and make the background transparent.
-</p> 
+<p align="justify">If the background is exchanged by a black background 
+it is also possible to remove this background and make the background
+transparent.</p> 
 
 <p align="justify">Step by step some more demos to the existing ones 
 will be added. The settings will result in a broader range of graphics
@@ -40,29 +40,49 @@ the creation of colourful QR codes.</p>
 
 ## Introduction
 
-to do ...
+<p align="justify">Over the years I have been working with Turtle 
+Graphics again and again with longer breaks in between. When working
+on masks for ComfyUI, the fastest way to create N-gons was to use
+Turtle Graphics. So I started working with Turtle Graphics again.</p> 
 
-## Main Goals
+## Main Goals of the Node
 
-One goal is to use the node as Turtle Graphics demonstrator and to play with settings of a special demo.
+<p align="justify">One goal is to use the node as Turtle Graphics
+demonstrator and to play with settings of a special demo.</p>
 
-Another goal is it to provide graphics to other applications. One exaample will be given later. The turtle 
-Graphics can be used for colorising QR codes. 
+<p align="justify">Another goal is it to provide graphics to other
+applications. One exaample will be given later.</p>
 
 ## Turtle Graphics
 
-In this node I made use of the special character of the Python module Turtle Graphics. As long one waits
-untill the image is drawn everything is fine. If not it could be that the code will  have a short confusion 
-in form of a catched error in the background. 
+<p align="justify">Turtle Graphics was developed in the 60s of the
+last century for learning and demonstration puposes. Turtle Graphics
+is an implementation of the popular geometric drawing tools introduced
+first in the programming language Logo developed 1967. In computer
+graphics, Turtle Graphics are a special kind of vector graphics using
+a relative cursor, which is called turtle upon a Cartesian co-ordinate 
+system plane with x and y axis.</p>
 
-Turtle Graphics is using Tkinter for the windows management. Starting a draw command Turtle Graphics is 
-opening a window for drawing. Within the node one can decide to show this window or not.
+## Turtle Graphics and Python
 
-One can decide to let a turtle or another shape drawing the image. This can also be set in the node.
+<p align="justify">In this node I made use of the special character 
+of the Python module Turtle Graphics. As long one waits until the 
+image is drawn everything is fine. If not it could be that the code
+will  have a short confusion in form of a catched error in the
+background.</p> 
+
+<p align="justify">Turtle Graphics is using Tkinter for the windows
+management. Starting a draw command Turtle Graphics is opening a (tkinter)
+window for drawing. Within the node one can decide to show this window 
+or not.</p> 
+
+<p align="justify">One can decide to let a turtle or another shape drawing
+the image. This can also be set in the node.</p> 
 
 ## Node Settings
 
-The node settings are largely self-explanatory. Accordingly, I am currently only providing a few comments.
+<p align="justify">The node settings are largely self-explanatory.
+Accordingly, I am currently only providing a few comments.</p>
 
 ## Turtle Graphics Squares Demo
 
@@ -92,21 +112,34 @@ Row 1 | ![ComfyUI_temp_otckr_00002_ (4)](https://github.com/user-attachments/ass
 Row 2 | ![ComfyUI_temp_otckr_00027_](https://github.com/user-attachments/assets/dfe7fedd-6cea-4725-9e0b-fe443b24db16) | ![ComfyUI_temp_otckr_00005_ (10)](https://github.com/user-attachments/assets/12786dce-22bb-419b-b766-5fa0126ab304) | ![ComfyUI_temp_otckr_00028_](https://github.com/user-attachments/assets/b5ef6459-3dcb-4f8e-a133-16fbbdfbcef7)
 Row 3 | ![ComfyUI_00609_](https://github.com/user-attachments/assets/d3346d66-0cf8-4e33-b145-b2c77f7d3919) | ![ComfyUI_00605_](https://github.com/user-attachments/assets/ab666638-2332-46cb-ba46-920386f94740) | ![ComfyUI_00621_](https://github.com/user-attachments/assets/5842e885-ccdd-47be-a87c-16e0df2d424f)
 
+### Turtle Graphics Circles Demo Node
 
+#### Pseudo Code
 
+<pre>
+number_rotations = 36
+circle_radius = 100
+increment_angle = 10°    
+col_len   
+LOOP FOR i FROM 0 TO number_rotations STEP 1
+    DRAW CIRCLE (circle_radius)
+    ROTATE TURTLE RIGHT (increment_angle)
+END LOOP
+</pre>
 
-### Circle Demo
+#### Node preview                
 
 ![image](https://github.com/user-attachments/assets/faeb7fbd-e715-4a50-8116-1e39b7846d8d)
 
-*Figure 3: Turtle Graphics Circle Demo*
+*Figure 3: Turtle Graphics Circles Demo node*
+
+#### Graphics Examples
 
   📎     | Column 1            | Column 2         |   Column 3  
 :----: | :-------------------------: | :-------------------------: | :----------------------------------:
 Row 1 | ![ComfyUI_temp_otckr_00030_](https://github.com/user-attachments/assets/d78b51bf-0efb-4c8b-a885-e4fc4e6fbc90) | ![ComfyUI_temp_otckr_00032_](https://github.com/user-attachments/assets/412b17e0-63e2-42c2-b522-e27eff587049) | ![ComfyUI_temp_otckr_00034_](https://github.com/user-attachments/assets/5701d9a3-ce5f-4e99-acad-ef6af2ba044a)
 Row 2 | ![ComfyUI_00567_](https://github.com/user-attachments/assets/f7430d8c-40f9-4a54-b618-6cd01c008366) | ![ComfyUI_00568_](https://github.com/user-attachments/assets/24673789-8419-4819-af23-0df8295a1f6b) | ![ComfyUI_00572_](https://github.com/user-attachments/assets/1d0a243b-5880-43e9-a5a9-7b767fc7bd04)
 Row 3 | ![ComfyUI_00577_](https://github.com/user-attachments/assets/ffe93bbb-2247-4945-b74e-ae18b70e7479) | ![ComfyUI_00579_](https://github.com/user-attachments/assets/68e3a0e5-7690-46f9-ace9-5c2cd5fa72f6) | ![ComfyUI_00593_](https://github.com/user-attachments/assets/85e19ab0-032c-45f4-9609-ad22777359e1)
-
 
 ### Turtle Graphics Circle Lobes Demo Node 
 
@@ -126,7 +159,6 @@ node. The settings for the graphics are fully parameterised.</p>
 Row 1 | ![ComfyUI_temp_otckr_00005_ (7)](https://github.com/user-attachments/assets/5d3bcd8a-24ab-43d7-99e3-d29c0f38cef9) | ![ComfyUI_temp_otckr_00006_ (2)](https://github.com/user-attachments/assets/2db35f0b-4219-4007-afc3-856d729900d1) | ![ComfyUI_temp_otckr_00010_ (4)](https://github.com/user-attachments/assets/ef0e5a23-2228-4a34-863d-d2b0b47188cb)
 Row 2 | ![ComfyUI_temp_otckr_00013_](https://github.com/user-attachments/assets/b03ca5e8-6a57-4665-b1fe-baa39944432a) | ![ComfyUI_temp_otckr_00015_ (1)](https://github.com/user-attachments/assets/62d14758-3954-4ed7-b204-0958ef0e0d41) | ![ComfyUI_temp_otckr_00016_](https://github.com/user-attachments/assets/b29f3a54-c7ec-477b-8d7f-f4aba416c81f)
 Row 3 | ![ComfyUI_temp_tvbxm_00010_ (1)](https://github.com/user-attachments/assets/673a92f0-5dce-4e6f-a101-339f44379435) | ![ComfyUI_temp_tvbxm_00013_](https://github.com/user-attachments/assets/e495cab7-a1dd-4bfb-8061-d4a8b9d8f8ba) | ![ComfyUI_temp_tvbxm_00016_](https://github.com/user-attachments/assets/b7435ed4-1b19-47ca-9232-bb3e63946da9)
-
 
 ### Turtle Graphics Concate Lines Demo Node 
 
