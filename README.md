@@ -175,7 +175,7 @@ number_rotations = 80
 LOOP FOR i FROM 1 TO number_rotations STEP 1
     LOOP FOR j FROM 1 TO 4 STEP 1 
         MOVE TURTLE FORWARD (length)
-        ROTATE TURTLE (90°)
+        ROTATE TURTLE LEFT (90°)
     END LOOP
     ROTATE TURTLE LEFT (angle)
     angle = angle + increment_angle
@@ -213,7 +213,21 @@ Row 3 | ![ComfyUI_00609_](https://github.com/user-attachments/assets/d3346d66-0c
 
 #### Pseudo Code
 
-to do ...
+Following pseudo code describes the movement of the turtle on the screen.
+
+<pre>
+angle = 45°    
+max_length = 180
+    
+LOOP FOR i FROM 1 TO max_length STEP 1
+        MOVE TURTLE FORWARD (i)
+        ROTATE TURTLE LEFT (angle)
+END LOOP
+</pre>
+
+The following (colorful) image was created using the pseudo code settings.
+
+![image](https://github.com/user-attachments/assets/45b9b57b-ae59-40bb-8a1a-2734d1d3e5c9)
 
 ### Turtle Graphics Circle Lobes Demo Node 
 
