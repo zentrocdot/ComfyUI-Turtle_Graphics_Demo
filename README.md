@@ -119,6 +119,13 @@ Row 1 | ![ComfyUI_temp_otckr_00005_ (7)](https://github.com/user-attachments/ass
 Row 2 | ![ComfyUI_temp_otckr_00013_](https://github.com/user-attachments/assets/b03ca5e8-6a57-4665-b1fe-baa39944432a) | ![ComfyUI_temp_otckr_00015_ (1)](https://github.com/user-attachments/assets/62d14758-3954-4ed7-b204-0958ef0e0d41) | ![ComfyUI_temp_otckr_00016_](https://github.com/user-attachments/assets/b29f3a54-c7ec-477b-8d7f-f4aba416c81f)
 Row 3 | ![ComfyUI_temp_tvbxm_00010_ (1)](https://github.com/user-attachments/assets/673a92f0-5dce-4e6f-a101-339f44379435) | ![ComfyUI_temp_tvbxm_00013_](https://github.com/user-attachments/assets/e495cab7-a1dd-4bfb-8061-d4a8b9d8f8ba) | ![ComfyUI_temp_tvbxm_00016_](https://github.com/user-attachments/assets/b7435ed4-1b19-47ca-9232-bb3e63946da9)
 
+## Real Life Example
+
+  📎     | Turtle Graphics           | QR Code                     |   AI Image  
+:----: | :-------------------------: | :-------------------------: | :-------------------------:
+Images | ![ComfyUI_temp_voxnf_00024_](https://github.com/user-attachments/assets/7b124883-d324-481e-9275-d88034f07101) | ![ComfyUI_temp_mzxdj_00009_](https://github.com/user-attachments/assets/1193ebc7-988f-4541-bbd9-3a790bad1e9b)
+ | ![ComfyUI_00528_](https://github.com/user-attachments/assets/61950ca6-5c58-46c4-ba61-83837e6c3783)
+
 ## Known Problems
 
 <p align="justify">Tkinker crashes under unknown circumstances. This can be resolved by restarting ComfyUI.</p>
