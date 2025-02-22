@@ -125,8 +125,8 @@ Row 3 | ![ComfyUI_00609_](https://github.com/user-attachments/assets/d3346d66-0c
 <pre>
 number_rotations = 36
 circle_radius = 100
-increment_angle = 10°    
-col_len   
+increment_angle = 10°
+
 LOOP FOR i FROM 0 TO number_rotations STEP 1
     DRAW CIRCLE (circle_radius)
     ROTATE TURTLE RIGHT (increment_angle)
