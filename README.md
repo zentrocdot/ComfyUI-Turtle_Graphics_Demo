@@ -116,7 +116,7 @@ Row 3 | ![ComfyUI_00609_](https://github.com/user-attachments/assets/d3346d66-0c
 
 #### Node Preview     
 
-<p align="justify">Figure 3 shows a preview of the Turtle Graphics Circles Demo Node.>/p>
+<p align="justify">Figure 3 shows a preview of the Turtle Graphics Circles Demo Node.</p>
 
 ![image](https://github.com/user-attachments/assets/faeb7fbd-e715-4a50-8116-1e39b7846d8d)
 
