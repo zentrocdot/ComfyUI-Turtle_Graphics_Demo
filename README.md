@@ -203,7 +203,7 @@ Row 3 | ![ComfyUI_temp_otckr_00011_ (4)](https://github.com/user-attachments/ass
 
 ![image](https://github.com/user-attachments/assets/ec1a7d40-29fe-4cd2-8da5-b4b496dd75ce)
 
-*Figure 2: Turtle Graphics Spiral Demo*
+*Figure 5: Turtle Graphics Spiral Demo*
 
  📎     | Column 1            | Column 2         |   Column 3  
 :----: | :-------------------------: | :-------------------------: | :----------------------------------:
@@ -224,7 +224,7 @@ node. The settings for the graphics are fully parameterised.</p>
 
 ![image](https://github.com/user-attachments/assets/d39e57b6-1b57-4032-bd29-d5b354c8255b)
 
-*Figure 4: Turtle Graphics Circle Lobes Demo*
+*Figure 6: Turtle Graphics Circle Lobes Demo*
 
 #### Graphics Examples
 
@@ -240,7 +240,7 @@ Row 3 | ![ComfyUI_temp_tvbxm_00010_ (1)](https://github.com/user-attachments/ass
 
 ![image](https://github.com/user-attachments/assets/cf429848-f707-4e31-91be-6c5375c9cfc9)
 
-*Figure 4: Turtle Graphics Concate Lines Demo*
+*Figure 7: Turtle Graphics Concate Lines Demo*
 
 #### Pseudo Code
 
