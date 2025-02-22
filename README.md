@@ -121,6 +121,12 @@ Row 3 | ![ComfyUI_temp_tvbxm_00010_ (1)](https://github.com/user-attachments/ass
 
 ## Real Life Example
 
+### Workflow Preview
+
+![image](https://github.com/user-attachments/assets/047ef65d-6c86-4002-9b81-1e70e1b4ef8e)
+
+### Example Images
+
   📎     | Turtle Graphics           | QR Code                     |   AI Image  
 :----: | :-------------------------: | :-------------------------: | :-------------------------:
 Images | ![ComfyUI_temp_voxnf_00024_](https://github.com/user-attachments/assets/7b124883-d324-481e-9275-d88034f07101) | ![ComfyUI_temp_mzxdj_00009_](https://github.com/user-attachments/assets/1193ebc7-988f-4541-bbd9-3a790bad1e9b)
@@ -128,13 +134,24 @@ Images | ![ComfyUI_temp_voxnf_00024_](https://github.com/user-attachments/assets
 
 ## Known Problems
 
-<p align="justify">Tkinker crashes under unknown circumstances. This can be resolved by restarting ComfyUI.</p>
+### Tkinter Crash
 
-Unsolved Error:
+<p align="justify">Tkinker crashes under unknown circumstances.
+In general this can be resolved by restarting ComfyUI.</p>
 
+### ComfyUI Crash
+
+<p align="justify">Sometimes following error occures, when
+closing to often a Turtle Graphics windows while Turtle
+Graphics is still drawing.</p>
+
+<pre>
 RuntimeError: main thread is not in main loop
-
 Tcl_AsyncDelete: async handler deleted by the wrong thread
+</pre>  
+
+<p align="justify">In general this can be resolved by restarting
+ComfyUI.</p>
 
 ## Open Questions
 
