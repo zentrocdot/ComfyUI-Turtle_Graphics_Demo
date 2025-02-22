@@ -227,7 +227,7 @@ END LOOP
 
 The following (colorful) image was created using the pseudo code settings.
 
-![image](https://github.com/user-attachments/assets/45b9b57b-ae59-40bb-8a1a-2734d1d3e5c9)
+![image](https://github.com/user-attachments/assets/de487fe3-de7d-4bbf-b314-a65534b273c3)
 
 ### Turtle Graphics Circle Lobes Demo Node 
 
