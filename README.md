@@ -101,8 +101,7 @@ Row 2 | ![ComfyUI_temp_otckr_00027_](https://github.com/user-attachments/assets/
 :----: | :-------------------------: | :-------------------------: | :----------------------------------:
 Row 1 | ![ComfyUI_temp_otckr_00030_](https://github.com/user-attachments/assets/d78b51bf-0efb-4c8b-a885-e4fc4e6fbc90) | ![ComfyUI_temp_otckr_00032_](https://github.com/user-attachments/assets/412b17e0-63e2-42c2-b522-e27eff587049) | ![ComfyUI_temp_otckr_00034_](https://github.com/user-attachments/assets/5701d9a3-ce5f-4e99-acad-ef6af2ba044a)
 Row 2 | ![ComfyUI_00567_](https://github.com/user-attachments/assets/f7430d8c-40f9-4a54-b618-6cd01c008366) | ![ComfyUI_00568_](https://github.com/user-attachments/assets/24673789-8419-4819-af23-0df8295a1f6b) | ![ComfyUI_00572_](https://github.com/user-attachments/assets/1d0a243b-5880-43e9-a5a9-7b767fc7bd04)
-
-
+Row 3 | ![ComfyUI_00577_](https://github.com/user-attachments/assets/ffe93bbb-2247-4945-b74e-ae18b70e7479) | ![ComfyUI_00579_](https://github.com/user-attachments/assets/68e3a0e5-7690-46f9-ace9-5c2cd5fa72f6) | ![ComfyUI_00593_](https://github.com/user-attachments/assets/85e19ab0-032c-45f4-9609-ad22777359e1)
 
 
 ### Turtle Graphics Circle Lobes Demo Node 
