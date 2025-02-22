@@ -138,7 +138,7 @@ END LOOP
 
 ![ComfyUI_00622_](https://github.com/user-attachments/assets/1a5915cb-5414-40ff-8ef1-fcc6e5dccade)
 
-*Figure 1: Image created using the pseudo code settings*
+*Figure 2: Image created using the pseudo code settings*
 
 #### Graphics Examples
 
@@ -158,7 +158,7 @@ Row 3 | ![ComfyUI_00577_](https://github.com/user-attachments/assets/ffe93bbb-22
 
 ![image](https://github.com/user-attachments/assets/c45793e2-bb84-481c-a7b8-d3c155236783)
 
-*Figure 1: Turtle Graphics Squares Demo*
+*Figure 3: Turtle Graphics Squares Demo*
 
 #### Pseudo Code
 
@@ -183,9 +183,11 @@ LOOP FOR i FROM 1 TO number_rotations STEP 1
 END LOOP
 </pre>
 
+The following (colorful) image was created using the pseudo code settings.
+
 ![image](https://github.com/user-attachments/assets/8a16fdcd-0f90-44a9-a1eb-c440675daa0c)
 
-Figure 2: Image created using the pseudo code settings
+Figure 4: Image created using the pseudo code settings
 
 ### Graphics Examples
 
