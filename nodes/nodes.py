@@ -668,9 +668,9 @@ class TurtleGraphicsCircleLobesDemo:
         return (image,)
 
 # *******************************
-# Class TurtleGraphicsSpuaresDemo
+# Class TurtleGraphicsSquaresDemo
 # *******************************
-class TurtleGraphicsSpuaresDemo:
+class TurtleGraphicsSquaresDemo:
     '''Create a Turtle Graphics circle demo.'''
 
     @classmethod
