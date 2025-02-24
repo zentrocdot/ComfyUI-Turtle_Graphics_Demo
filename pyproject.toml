@@ -1,7 +1,7 @@
 [project]
 name = "ComfyUI-Turtle_Graphics_Demos"
 description = "ComfyUI node for creating some Turtle Graphic demos."
-version = "0.0.0.8"
+version = "0.0.0.9"
 license = {file = "LICENSE"}
 
 [project.urls]
