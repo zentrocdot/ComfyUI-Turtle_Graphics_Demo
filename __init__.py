@@ -1,13 +1,19 @@
 # Import the user defined Python modules of the node.
 from .nodes.nodes import *
+from .nodes.rotated_pentagram import *
+from .nodes.rotated_nstar import *
+from .nodes.sierpinski_curve import *
 
 # Define the node class mappings.
 NODE_CLASS_MAPPINGS = {
     "🪲 Turtle Graphics Circles Demo": TurtleGraphicsCirclesDemo,
     "🪲 Turtle Graphics Circle Lobes Demo": TurtleGraphicsCircleLobesDemo,  
-    "🪲 Turtle Graphics Squares Demo": TurtleGraphicsSpuaresDemo,
+    "🪲 Turtle Graphics Squares Demo": TurtleGraphicsSquaresDemo,
     "🪲 Turtle Graphics Spiral Demo": TurtleGraphicsSpiralDemo,
     "🪲 Turtle Graphics Concate Lines Demo": TurtleGraphicsConcateLinesDemo,
+    "🪲 Turtle Graphics Rotated Pentagram Demo": TurtleGraphicsRotatedPentagramDemo,
+    "🪲 Turtle Graphics Rotated Nstar Demo": TurtleGraphicsRotatedNstarDemo,
+    "🪲 Turtle Graphics Sierpinski Curve": TurtleGraphicsSierpinskiCurveDemo,
     }
 
 WEB_DIRECTORY = "./js"
