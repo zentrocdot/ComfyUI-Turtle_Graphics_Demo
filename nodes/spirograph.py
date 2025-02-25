@@ -1,5 +1,7 @@
 #!/usr/bin/python
 '''Simple Turtle Graphics demo(nstrator).'''
+# pylint: disable=protected-access
+# pylint: disable=useless-return
 # pylint: disable=invalid-name
 # pylint: disable=bare-except
 # pylint: disable=broad-exception-caught
@@ -7,15 +9,11 @@
 # pylint: disable=too-many-positional-arguments
 # pylint: disable=unused-argument
 # pylint: disable=too-many-arguments
-# pylint: disable=line-too-long
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
-# pylint: disable=protected-access
-# pylint: disable=too-many-lines
 # pylint: disable=unused-variable
-# pylint: disable=redefined-outer-name
-# pylint: disable=useless-return
+# pylint: disable=line-too-long
 
 # Import the standard Python modules.
 from math import cos, sin
@@ -156,7 +154,7 @@ def string2tuple(color_string):
 # *****************
 def resize_pil_image(image, width, height, sampler):
     '''Resize Pil image.'''
-    h, w, c = image.shape
+    h, w, _ = image.shape
     #print("Dimensions:", h, w, c)
     if h == height and w == width:
         # Print message.
@@ -248,6 +246,7 @@ class TurtleGraphicsSpirographDemo:
                 "remove_spirograph": ("BOOLEAN", {"default": False, "label_on": "on", "label_off": "off"}),
                 "point_size": ("FLOAT", {"default": 8.0, "min": 0.1, "max": 100000.0, "step": 0.1}),
                 "turtle_speed": ("FLOAT", {"default": 0.00, "min": 0.00, "max": 10, "step": 0.01}),
+                "colorful_on_off": ("BOOLEAN", {"default": False, "label_on": "on", "label_off": "off"}),
                 "fill_on_off": ("BOOLEAN", {"default": False, "label_on": "on", "label_off": "off"}),
                 "bg_on_off": ("BOOLEAN", {"default": False, "label_on": "on", "label_off": "off"}),
                 "bg_color": ("STRING", {"multiline": False, "default": "black"}),
@@ -263,6 +262,7 @@ class TurtleGraphicsSpirographDemo:
                 "screen_color": ("STRING", {"multiline": False, "default": "orange"}),
                 "withdraw_window": ("BOOLEAN", {"default": False, "label_on": "on", "label_off": "off"}),
                 "remove_background": ("BOOLEAN", {"default": False, "label_on": "on", "label_off": "off"}),
+                "start_delay": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 120.0, "step": 0.1}),
             },
             "optional": {
             },
@@ -279,7 +279,7 @@ class TurtleGraphicsSpirographDemo:
             fill_color, r_color, R_color, withdraw_window, bg_on_off,
             bg_color, r, R, d, width, height, resize_sampler,
             remove_background, point_size, pen_thickness,
-            remove_spirograph, theta):
+            remove_spirograph, theta, start_delay, colorful_on_off):
         '''Create a simple Turtle Graphics Demo.'''
         # Create a fg color list.
         fg_color = create_color_list(fg_color)
@@ -336,11 +336,13 @@ class TurtleGraphicsSpirographDemo:
             # ------------------------------------
             # START MAIN IMAGE CREATION
             # ------------------------------------
+            # Set start delay.
+            if start_delay >= 0.0:
+                sleep(start_delay)
             # Set some variables.
             angle = 0
             # Calculate number of steps.
             number_steps = int(2 * math.pi * number_rotations / theta)
-            print(number_steps)
             # Go to start position.
             tsPen.penup()
             tsPen.goto(R-r+d, 0)
@@ -378,15 +380,19 @@ class TurtleGraphicsSpirographDemo:
                     y = (R - r) * sin(angle) - d * sin(((R-r)/r)*angle)
                     ts.goto(x, y)
                     ts.dot(point_size)  # Print outer dot.
+                    if colorful_on_off:
+                        tsPen.pencolor(fg_color[t % col_len])
                     tsPen.goto(ts.pos())  # Draw curve.
                     ts.getscreen().update()
                     # Sleep a little bit.
                     sleep(turtle_speed)
                 else:
-                    print(fill_color)
+                    # Increment angle.
                     angle += theta
                     x = (R - r) * cos(angle) + d * cos(((R-r)/r)*angle)
                     y = (R - r) * sin(angle) - d * sin(((R-r)/r)*angle)
+                    if colorful_on_off:
+                        tsPen.pencolor(fg_color[t % col_len])
                     tsPen.goto(x, y)
                     tsPen.getscreen().update()
                     # Sleep a little bit.
@@ -474,7 +480,7 @@ class TurtleGraphicsSpirographDemo:
             fill_on_off, fill_color, bg_color, width, height, r_color,
             R_color, bg_on_off, withdraw_window, resize_sampler, r, R, d,
             remove_background, point_size, pen_thickness, remove_spirograph,
-            theta):
+            theta, start_delay, colorful_on_off):
         '''Main node function. Create a Turtle Graphics demo.'''
         # Run the demo.
         image = self.demo(spirograph_thickness, turtle_speed, number_rotations,
@@ -482,11 +488,7 @@ class TurtleGraphicsSpirographDemo:
                     fill_color, r_color, R_color, withdraw_window, bg_on_off,
                     bg_color, r, R, d, width, height, resize_sampler,
                     remove_background, point_size, pen_thickness,
-                    remove_spirograph, theta)
-        # Convert PIL image to Numpy array.
-        numpy_image = np.array(image)
-        # Resize the image.
-        sampler = RESIZE_SAMPLER[resize_sampler]
+                    remove_spirograph, theta, start_delay, colorful_on_off)
         # Convert 'PIL' image to Tensor.
         image = pil2tensor(image)
         # Return the return types.
