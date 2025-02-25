@@ -15,15 +15,18 @@
 # pylint: disable=too-many-lines
 # pylint: disable=unused-variable
 # pylint: disable=redefined-outer-name
+# pylint: disable=useless-return
 
 # Import the standard Python modules.
+from math import cos, sin
+import math
 import re
 import hashlib
 import pathlib
 import time
 import turtle
 from datetime import datetime
-import math
+from time import sleep
 
 # Import the third party Python modules.
 import torch
@@ -40,10 +43,7 @@ COMFYUI_PATH = pathlib.Path(CUSTOM_NODES_PATH).parent.resolve()
 OUTPUT_PATH = ''.join([str(COMFYUI_PATH), "/output"])
 
 # Set some constants.
-TURTLE_TITLE = "Object-Oriented Turtle Demo"
-
-# Set the shape of the turtle.
-TURTLE = ['turtle', 'arrow', 'blank', 'circle', 'classic', 'square', 'triangle']
+TURTLE_TITLE = "Spirograph Simulation"
 
 # Define the resize sampler.
 RESIZE_SAMPLER = {"LANCZOS": 1, "BICUBIC": 3, "BILINEAR": 2,
@@ -188,37 +188,41 @@ def pil2tensor(image):
     # Return tensor.
     return torch.from_numpy(np.array(image).astype(np.float32) / 255.0).unsqueeze(0)
 
-# ***********************
-# OneSidePattern function
-# ***********************
-def OneSidePattern(ts, length, diag, level):
-    '''OneSidePattern function.'''
-    # Draw one side sierpinski.
-    OneSidePattern(ts, length, diag, level-1)
-    ts.right(45); ts.forward(diag); ts.right(45)
-    OneSidePattern(ts, length, diag, level-1)
-    ts.left(90); ts.forward(length); ts.left(90)
-    OneSidePattern(ts, length, diag, level-1)
-    ts.right(45); ts.forward(diag); ts.right(45)
-    OneSidePattern(ts, length, diag, level-1)
+# ----------------
+# Ellipse function
+# ----------------
+def ellipse(ts, a, b, phi, h=0, k=0, theta=1):
+    '''Turtle Graphics ellipse.'''
+    # Get phi in radians.
+    phi_rad = math.radians(phi)
+    # Set the rotation angle.
+    alpha = 360
+    # Pen up.
+    ts.up()
+    # Loop over the roattion angle.
+    for t in range(0,alpha+1):
+        # Pen down if in start position.
+        if t != 0:
+            ts.down()
+        # Degrees in radians conversion.
+        rad = math.radians(t)
+        # Calculate the ellipse.
+        x0 = h + (a * math.cos(rad))
+        y0 = k + (b * math.sin(rad))
+        # Rotate the ellipse in counter clockwise direction.
+        x1 = math.cos(theta * phi_rad) * x0 + math.sin(theta * phi_rad) * y0
+        y1 = -math.sin(theta * phi_rad) * x0 + math.cos(theta * phi_rad) * y0
+        # Set the heading of the turtle.
+        ts.seth(phi)
+        # Draw point of the ellipse
+        ts.setposition(x1, y1)
+    # Return None
+    return None
 
-# *******************
-# Sierpinski function
-# *******************
-def sierpinski(ts, length, level, color):
-    '''Sierpinski function.'''
-    # Calculate the diagonal.
-    diag = length / math.sqrt(2)
-    # Create one sierpinski pattern.
-    for i in range(4):
-        ts.pencolor(color[i % len(color)])
-        OneSidePattern(ts, length, diag, level)
-        ts.right(45); ts.forward(diag); ts.right(45)
-
-# ****************************************
-# Class TurtleGraphicsSirpinskiCurveDemo
-# ****************************************
-class TurtleGraphicsSierpinskiCurveDemo:
+# **********************************
+# Class TurtleGraphicsSpirographDemo
+# **********************************
+class TurtleGraphicsSpirographDemo:
     '''Create a Turtle Graphics rotated pentagram demo.'''
 
     @classmethod
@@ -234,20 +238,22 @@ class TurtleGraphicsSierpinskiCurveDemo:
         '''Define the input types.'''
         return {
             "required": {
-                "level": ("INT", {"default": 4, "min": 1, "max": 100000}),
-                "length": ("FLOAT", {"default": 16.5, "min": 0.0, "max": 2048}),
-                "xpos": ("INT", {"default": 256, "min": 0, "max": 4096}),
-                "ypos": ("INT", {"default": 256, "min": 0, "max": 4096}),
-                "start_angle": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 360.0}),
-                "thickness": ("FLOAT", {"default": 0.1, "min": 0.1, "max": 100000.0, "step": 0.1}),
-                "turtle_speed": ("INT", {"default": 0, "min": 0, "max": 10}),
-                "turtle_shape": (TURTLE, {}),
-                "hide_turtle": ("BOOLEAN", {"default": True, "label_on": "on", "label_off": "off"}),
+                "number_rotations": ("INT", {"default": 9, "min": 1, "max": 2048}),
+                "R": ("FLOAT", {"default": 130.0, "min": 0.0, "max": 2048.0}),
+                "r": ("FLOAT", {"default": 90.0, "min": 0.0, "max": 2048.0}),
+                "d": ("FLOAT", {"default": 120.0, "min": 0.0, "max": 2048.0}),
+                "theta": ("FLOAT", {"default": 0.1, "min": 0.01, "max": 2048.0, "step": 0.01}),
+                "pen_thickness": ("FLOAT", {"default": 2.5, "min": 0.1, "max": 100000.0, "step": 0.1}),
+                "spirograph_thickness": ("FLOAT", {"default": 1.5, "min": 0.1, "max": 100000.0, "step": 0.1}),
+                "remove_spirograph": ("BOOLEAN", {"default": False, "label_on": "on", "label_off": "off"}),
+                "point_size": ("FLOAT", {"default": 8.0, "min": 0.1, "max": 100000.0, "step": 0.1}),
+                "turtle_speed": ("FLOAT", {"default": 0.00, "min": 0.00, "max": 10, "step": 0.01}),
                 "fill_on_off": ("BOOLEAN", {"default": False, "label_on": "on", "label_off": "off"}),
                 "bg_on_off": ("BOOLEAN", {"default": False, "label_on": "on", "label_off": "off"}),
                 "bg_color": ("STRING", {"multiline": False, "default": "black"}),
                 "fg_color": ("STRING", {"multiline": True, "default": "red, green, blue, yellow, cyan, magenta"}),
-                "pen_color": ("STRING", {"multiline": False, "default": "red"}),
+                "r_color": ("STRING", {"multiline": False, "default": "lightslateblue"}),
+                "R_color": ("STRING", {"multiline": False, "default": "darkslategray"}),
                 "fill_color": ("STRING", {"multiline": False, "default": "blue"}),
                 "width": ("INT", {"default": 512, "min": 1, "max": 8192}),
                 "height": ("INT", {"default": 512, "min": 1, "max": 8192}),
@@ -268,11 +274,12 @@ class TurtleGraphicsSierpinskiCurveDemo:
     CATEGORY = "🐢 Turtle Graphics"
     OUTPUT_NODE = True
 
-    def demo(self, thickness, turtle_speed, turtle_shape, level,
-            hide_turtle, screen_color, fg_color, screen_x, screen_y,
-            fill_on_off, fill_color, pen_color, withdraw_window,
-            start_angle, bg_on_off, bg_color, length, width, height,
-            resize_sampler, remove_background, xpos, ypos):
+    def demo(self, spirograph_thickness, turtle_speed, number_rotations,
+            screen_color, fg_color, screen_x, screen_y, fill_on_off,
+            fill_color, r_color, R_color, withdraw_window, bg_on_off,
+            bg_color, r, R, d, width, height, resize_sampler,
+            remove_background, point_size, pen_thickness,
+            remove_spirograph, theta):
         '''Create a simple Turtle Graphics Demo.'''
         # Create a fg color list.
         fg_color = create_color_list(fg_color)
@@ -286,12 +293,14 @@ class TurtleGraphicsSierpinskiCurveDemo:
             # Define the turtle screen.
             sc = turtle.Screen()
             sc.setup(screen_x, screen_y)
-            # Set title and background color.
-            turtle.title(TURTLE_TITLE)
             # Clear the screen.
             turtle.clear()
             turtle.clearscreen()
+            # Set title and background color.
+            turtle.title(TURTLE_TITLE)
             turtle.bgcolor(screen_color)
+            # Hide the turtle in general.
+            turtle.hideturtle()
             # Withdraw window.
             root = turtle.getscreen()._root
             if withdraw_window:
@@ -300,20 +309,18 @@ class TurtleGraphicsSierpinskiCurveDemo:
                 root.deiconify()
             # Define the turtle object.
             ts = turtle.Turtle()
-            # Set the fill color.
-            ts.fillcolor(fill_color)
-            # Set the pen color.
-            ts.pencolor(pen_color)
-            # Set the shape of the turtle.
-            ts.shape(turtle_shape)
-            # Set the speed of the turtle.
-            ts.speed(turtle_speed)
-            # Set the pen size.
-            ts.pensize(thickness)
-            # Hide the turtle.
-            if hide_turtle:
-                turtle.hideturtle()
-                ts.hideturtle()
+            ts.hideturtle()
+            ts.speed(0)
+            ts.pensize(spirograph_thickness)
+            ts.pencolor(R_color)
+            # Define the pen object.
+            tsPen = turtle.Turtle()
+            tsPen.hideturtle()
+            tsPen.speed(0)
+            tsPen.pensize(pen_thickness)
+            tsPen.color(fg_color[0])  # Curve color.
+            # Set the turtle tracer.
+            turtle.tracer(0,0)
             # Check if background needed.
             if bg_on_off:
                 # Get the turtle screen.
@@ -326,30 +333,70 @@ class TurtleGraphicsSierpinskiCurveDemo:
                 x1, y1 = int(screen_x/2)-pad, int(screen_y/2)-pad
                 rect = tkwin.create_rectangle(x0, y0, x1, y1,
                            width=0, outline=bg_color, fill=bg_color)
-            # Start fill.
-            if fill_on_off:
-                ts.begin_fill()
             # ------------------------------------
             # START MAIN IMAGE CREATION
             # ------------------------------------
-            ts.left(start_angle)
-            ts.up()
-            ts.goto(xpos, ypos)
-            ts.right(90)
-            ts.down()
-            sierpinski(ts, length, level, fg_color)
+            # Set some variables.
+            angle = 0
+            # Calculate number of steps.
+            number_steps = int(2 * math.pi * number_rotations / theta)
+            print(number_steps)
+            # Go to start position.
+            tsPen.penup()
+            tsPen.goto(R-r+d, 0)
+            tsPen.pendown()
+            # Start fill.
+            if fill_on_off:
+                tsPen.fillcolor(fill_color)
+                tsPen.begin_fill()
+            for t in range(0, number_steps):
+                if not remove_spirograph:
+                    # Draw the outer circle.
+                    ts.clear()
+                    ts.penup()
+                    ts.setheading(0)
+                    ts.goto(0, -R)
+                    ts.color(R_color)
+                    ts.pendown()
+                    ts.circle(R)
+                    # Calculate a new position.
+                    angle += theta
+                    x = (R - r) * cos(angle)
+                    y = (R - r) * sin(angle)
+                    # Draw the inner circle.
+                    ts.penup()
+                    ts.goto(x, y-r)
+                    ts.color(r_color)
+                    ts.pendown()
+                    ts.circle(r)
+                    # Draw curve.
+                    ts.penup()
+                    ts.goto(x, y)
+                    ts.pendown()
+                    ts.dot(point_size)  # Print inner dot.
+                    x = (R - r) * cos(angle) + d * cos(((R-r)/r)*angle)
+                    y = (R - r) * sin(angle) - d * sin(((R-r)/r)*angle)
+                    ts.goto(x, y)
+                    ts.dot(point_size)  # Print outer dot.
+                    tsPen.goto(ts.pos())  # Draw curve.
+                    ts.getscreen().update()
+                    # Sleep a little bit.
+                    sleep(turtle_speed)
+                else:
+                    print(fill_color)
+                    angle += theta
+                    x = (R - r) * cos(angle) + d * cos(((R-r)/r)*angle)
+                    y = (R - r) * sin(angle) - d * sin(((R-r)/r)*angle)
+                    tsPen.goto(x, y)
+                    tsPen.getscreen().update()
+                    # Sleep a little bit.
+                    sleep(turtle_speed)
             # ------------------------------------
             # END MAIN IMAGE CREATION
             # ------------------------------------
             # End fill.
             if fill_on_off:
-                ts.end_fill()
-            # Reset the pen color.
-            ts.pencolor(pen_color)
-            # Hide the turtle.
-            if hide_turtle:
-                turtle.hideturtle()
-                ts.hideturtle()
+                tsPen.end_fill()
             # Set the file names.
             d = datetime.now().strftime("%m%d%Y_%H%M%S_%f")
             name_eps = "/TGN_" + str(d) + ".eps"
@@ -382,7 +429,6 @@ class TurtleGraphicsSierpinskiCurveDemo:
                 new_img = new_img.convert("RGB")
             pad = int(scale * 1 * 1.4)
             cx, cy = new_img.size
-            print(cx,cy)
             new_img = new_img.crop((0,pad,cx-pad,cy-0))
             # Calculate the aspect ratio of the image.
             aspect_ratio = min(target_bounds[0] / new_img.size[0],
@@ -423,21 +469,20 @@ class TurtleGraphicsSierpinskiCurveDemo:
         # Return the opencv image.
         return pil_image
 
-    def turtle_graphics_main(self, thickness, turtle_speed, turtle_shape,
-            level, hide_turtle, screen_color, fg_color,
-            screen_x, screen_y, fill_on_off, fill_color, bg_color,
-            width, height, pen_color, bg_on_off, withdraw_window,
-            start_angle, resize_sampler, length, remove_background,
-            xpos, ypos):
+    def turtle_graphics_main(self, spirograph_thickness, turtle_speed,
+            number_rotations, screen_color, fg_color, screen_x, screen_y,
+            fill_on_off, fill_color, bg_color, width, height, r_color,
+            R_color, bg_on_off, withdraw_window, resize_sampler, r, R, d,
+            remove_background, point_size, pen_thickness, remove_spirograph,
+            theta):
         '''Main node function. Create a Turtle Graphics demo.'''
         # Run the demo.
-        image = self.demo(thickness, turtle_speed, turtle_shape,
-                    level, hide_turtle, screen_color,
-                    fg_color, screen_x, screen_y, fill_on_off,
-                    fill_color, pen_color, withdraw_window,
-                    start_angle, bg_on_off, bg_color, length, width,
-                    height, resize_sampler, remove_background,
-                    xpos, ypos)
+        image = self.demo(spirograph_thickness, turtle_speed, number_rotations,
+                    screen_color, fg_color, screen_x, screen_y, fill_on_off,
+                    fill_color, r_color, R_color, withdraw_window, bg_on_off,
+                    bg_color, r, R, d, width, height, resize_sampler,
+                    remove_background, point_size, pen_thickness,
+                    remove_spirograph, theta)
         # Convert PIL image to Numpy array.
         numpy_image = np.array(image)
         # Resize the image.

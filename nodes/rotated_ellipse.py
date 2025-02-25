@@ -15,15 +15,16 @@
 # pylint: disable=too-many-lines
 # pylint: disable=unused-variable
 # pylint: disable=redefined-outer-name
+# pylint: disable=useless-return
 
 # Import the standard Python modules.
+import math
 import re
 import hashlib
 import pathlib
 import time
 import turtle
 from datetime import datetime
-import math
 
 # Import the third party Python modules.
 import torch
@@ -188,37 +189,41 @@ def pil2tensor(image):
     # Return tensor.
     return torch.from_numpy(np.array(image).astype(np.float32) / 255.0).unsqueeze(0)
 
-# ***********************
-# OneSidePattern function
-# ***********************
-def OneSidePattern(ts, length, diag, level):
-    '''OneSidePattern function.'''
-    # Draw one side sierpinski.
-    OneSidePattern(ts, length, diag, level-1)
-    ts.right(45); ts.forward(diag); ts.right(45)
-    OneSidePattern(ts, length, diag, level-1)
-    ts.left(90); ts.forward(length); ts.left(90)
-    OneSidePattern(ts, length, diag, level-1)
-    ts.right(45); ts.forward(diag); ts.right(45)
-    OneSidePattern(ts, length, diag, level-1)
+# ----------------
+# Ellipse function
+# ----------------
+def ellipse(ts, a, b, phi, h=0, k=0, theta=1):
+    '''Turtle Graphics ellipse.'''
+    # Get phi in radians.
+    phi_rad = math.radians(phi)
+    # Set the rotation angle.
+    alpha = 360
+    # Pen up.
+    ts.up()
+    # Loop over the roattion angle.
+    for t in range(0,alpha+1):
+        # Pen down if in start position.
+        if t != 0:
+            ts.down()
+        # Degrees in radians conversion.
+        rad = math.radians(t)
+        # Calculate the ellipse.
+        x0 = h + (a * math.cos(rad))
+        y0 = k + (b * math.sin(rad))
+        # Rotate the ellipse in counter clockwise direction.
+        x1 = math.cos(theta * phi_rad) * x0 + math.sin(theta * phi_rad) * y0
+        y1 = -math.sin(theta * phi_rad) * x0 + math.cos(theta * phi_rad) * y0
+        # Set the heading of the turtle.
+        ts.seth(phi)
+        # Draw point of the ellipse
+        ts.setposition(x1, y1)
+    # Return None
+    return None
 
-# *******************
-# Sierpinski function
-# *******************
-def sierpinski(ts, length, level, color):
-    '''Sierpinski function.'''
-    # Calculate the diagonal.
-    diag = length / math.sqrt(2)
-    # Create one sierpinski pattern.
-    for i in range(4):
-        ts.pencolor(color[i % len(color)])
-        OneSidePattern(ts, length, diag, level)
-        ts.right(45); ts.forward(diag); ts.right(45)
-
-# ****************************************
-# Class TurtleGraphicsSirpinskiCurveDemo
-# ****************************************
-class TurtleGraphicsSierpinskiCurveDemo:
+# **************************************
+# Class TurtleGraphicsRotatedEllipseDemo
+# **************************************
+class TurtleGraphicsRotatedEllipseDemo:
     '''Create a Turtle Graphics rotated pentagram demo.'''
 
     @classmethod
@@ -234,11 +239,11 @@ class TurtleGraphicsSierpinskiCurveDemo:
         '''Define the input types.'''
         return {
             "required": {
-                "level": ("INT", {"default": 4, "min": 1, "max": 100000}),
-                "length": ("FLOAT", {"default": 16.5, "min": 0.0, "max": 2048}),
-                "xpos": ("INT", {"default": 256, "min": 0, "max": 4096}),
-                "ypos": ("INT", {"default": 256, "min": 0, "max": 4096}),
-                "start_angle": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 360.0}),
+                "number_rotations": ("INT", {"default": 72, "min": 1, "max": 2048}),
+                "angle": ("FLOAT", {"default": 5, "min": 0.0, "max": 360.0}),
+                "start_angle": ("FLOAT", {"default": 5.0, "min": 0.0, "max": 360.0}),
+                "a": ("FLOAT", {"default": 200.0, "min": 0.0, "max": 2048.0}),
+                "b": ("FLOAT", {"default": 100.0, "min": 0.0, "max": 2048.0}),
                 "thickness": ("FLOAT", {"default": 0.1, "min": 0.1, "max": 100000.0, "step": 0.1}),
                 "turtle_speed": ("INT", {"default": 0, "min": 0, "max": 10}),
                 "turtle_shape": (TURTLE, {}),
@@ -268,11 +273,11 @@ class TurtleGraphicsSierpinskiCurveDemo:
     CATEGORY = "🐢 Turtle Graphics"
     OUTPUT_NODE = True
 
-    def demo(self, thickness, turtle_speed, turtle_shape, level,
+    def demo(self, thickness, turtle_speed, turtle_shape, number_rotations,
             hide_turtle, screen_color, fg_color, screen_x, screen_y,
-            fill_on_off, fill_color, pen_color, withdraw_window,
-            start_angle, bg_on_off, bg_color, length, width, height,
-            resize_sampler, remove_background, xpos, ypos):
+            fill_on_off, fill_color, pen_color, withdraw_window, angle,
+            start_angle, bg_on_off, bg_color, a, b, width, height,
+            resize_sampler, remove_background):
         '''Create a simple Turtle Graphics Demo.'''
         # Create a fg color list.
         fg_color = create_color_list(fg_color)
@@ -333,11 +338,12 @@ class TurtleGraphicsSierpinskiCurveDemo:
             # START MAIN IMAGE CREATION
             # ------------------------------------
             ts.left(start_angle)
-            ts.up()
-            ts.goto(xpos, ypos)
-            ts.right(90)
-            ts.down()
-            sierpinski(ts, length, level, fg_color)
+            for i in range(number_rotations):
+                ts.pencolor(fg_color[i % len(fg_color)])
+                turtle.tracer(0,0)
+                ellipse(ts, a, b, i*angle)
+                turtle.update()
+                ts.left(angle)
             # ------------------------------------
             # END MAIN IMAGE CREATION
             # ------------------------------------
@@ -424,20 +430,18 @@ class TurtleGraphicsSierpinskiCurveDemo:
         return pil_image
 
     def turtle_graphics_main(self, thickness, turtle_speed, turtle_shape,
-            level, hide_turtle, screen_color, fg_color,
+            number_rotations, hide_turtle, screen_color, fg_color,
             screen_x, screen_y, fill_on_off, fill_color, bg_color,
             width, height, pen_color, bg_on_off, withdraw_window,
-            start_angle, resize_sampler, length, remove_background,
-            xpos, ypos):
+            angle, start_angle, resize_sampler, a, b, remove_background):
         '''Main node function. Create a Turtle Graphics demo.'''
         # Run the demo.
         image = self.demo(thickness, turtle_speed, turtle_shape,
-                    level, hide_turtle, screen_color,
+                    number_rotations, hide_turtle, screen_color,
                     fg_color, screen_x, screen_y, fill_on_off,
-                    fill_color, pen_color, withdraw_window,
-                    start_angle, bg_on_off, bg_color, length, width,
-                    height, resize_sampler, remove_background,
-                    xpos, ypos)
+                    fill_color, pen_color, withdraw_window, angle,
+                    start_angle, bg_on_off, bg_color, a, b, width,
+                    height, resize_sampler, remove_background)
         # Convert PIL image to Numpy array.
         numpy_image = np.array(image)
         # Resize the image.
