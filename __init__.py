@@ -3,6 +3,8 @@ from .nodes.nodes import *
 from .nodes.rotated_pentagram import *
 from .nodes.rotated_nstar import *
 from .nodes.sierpinski_curve import *
+from .nodes.rotated_ellipse import *
+from .nodes.spirograph import *
 
 # Define the node class mappings.
 NODE_CLASS_MAPPINGS = {
@@ -14,6 +16,8 @@ NODE_CLASS_MAPPINGS = {
     "🪲 Turtle Graphics Rotated Pentagram Demo": TurtleGraphicsRotatedPentagramDemo,
     "🪲 Turtle Graphics Rotated Nstar Demo": TurtleGraphicsRotatedNstarDemo,
     "🪲 Turtle Graphics Sierpinski Curve": TurtleGraphicsSierpinskiCurveDemo,
+    "🪲 Turtle Graphics Rotated Ellipse": TurtleGraphicsRotatedEllipseDemo,
+    "🪲 Turtle Graphics Spirograph": TurtleGraphicsSpirographDemo,
     }
 
 WEB_DIRECTORY = "./js"
