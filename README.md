@@ -69,7 +69,7 @@ state.</p>
 
 ## Turtle Graphics Implementations
 
-Implementations of Turtle Graphics in programming languages are:
+Implementations of Turtle Graphics in programming languages can be found in:
 
 * Logo
 * Python
