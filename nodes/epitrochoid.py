@@ -300,9 +300,9 @@ class TurtleGraphicsEpitrochoidDemo:
         return {
             "required": {
                 "number_rotations": ("INT", {"default": 9, "min": 1, "max": 2048}),
-                "R": ("FLOAT", {"default": 130.0, "min": 0.0, "max": 2048.0}),
-                "r": ("FLOAT", {"default": 90.0, "min": 0.0, "max": 2048.0}),
-                "d": ("FLOAT", {"default": 120.0, "min": 0.0, "max": 2048.0}),
+                "R": ("FLOAT", {"default": 100.0, "min": 0.0, "max": 2048.0}),
+                "r": ("FLOAT", {"default": 60.0, "min": 0.0, "max": 2048.0}),
+                "d": ("FLOAT", {"default": 50.0, "min": 0.0, "max": 2048.0}),
                 "theta": ("FLOAT", {"default": 0.1, "min": 0.01, "max": 2048.0, "step": 0.01}),
                 "pen_thickness": ("FLOAT", {"default": 2.5, "min": 0.1, "max": 100000.0, "step": 0.1}),
                 "spirograph_thickness": ("FLOAT", {"default": 1.5, "min": 0.1, "max": 100000.0, "step": 0.1}),
