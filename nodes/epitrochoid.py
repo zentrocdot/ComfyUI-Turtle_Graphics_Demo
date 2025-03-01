@@ -278,7 +278,7 @@ def save_png(EPS_PATH, PNG_PATH, width, height, resize_sampler):
     # Save the image.
     pil_image.save(PNG_PATH)
     # Return None.
-    return None
+    return pil_image
 
 # **********************************
 # Class TurtleGraphicsEpitrochoidDemo
@@ -494,7 +494,7 @@ class TurtleGraphicsEpitrochoidDemo:
             # Save the eps image.
             save_eps(turtle, EPS_PATH, screen_x, screen_y)
             # Save the png image.
-            save_png(EPS_PATH, PNG_PATH, width, height, resize_sampler)
+            pil_image = save_png(EPS_PATH, PNG_PATH, width, height, resize_sampler)
             # Turtle is done.
             if withdraw_window:
                 root.quit()
