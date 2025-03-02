@@ -15,20 +15,23 @@
 # pylint: disable=unused-variable
 # pylint: disable=line-too-long
 # pylint: disable=redefined-outer-name
+# pylint: disable=unused-import
+# pylint: disable=too-few-public-methods
 
 # Import the standard Python modules.
 import tkinter as tk
+import turtle
 from math import cos, sin
 import math
 import re
 import hashlib
 import pathlib
 import time
-import turtle
 from datetime import datetime
 from time import sleep
 from io import BytesIO
-import imageio
+import traceback
+from tkinter import messagebox
 
 # Import the third party Python modules.
 import torch
@@ -36,6 +39,7 @@ import webcolors
 import cv2
 import numpy as np
 from PIL import Image
+import imageio
 
 # Set some paths.
 SCRIPT_PATH = pathlib.Path(__file__).parent.resolve()
@@ -51,6 +55,57 @@ TURTLE_TITLE = "Spirograph Simulation"
 RESIZE_SAMPLER = {"LANCZOS": 1, "BICUBIC": 3, "BILINEAR": 2,
                   "BOX": 4, "HAMMING": 5, "NEAREST": 0}
 KEYS = list(RESIZE_SAMPLER.keys())
+
+# -------------------
+# Class Error Window.
+# -------------------
+class ErrWin:
+    '''Err win class.'''
+    def __init__(self, error_message):
+        err_win = tk.Tk()
+        err_win.withdraw()
+        err_win.option_add('*Dialog.msg.font', 'Helvetica 12 bold')
+        #err_win.option_add('*Dialog.msg.width', 20)
+        err_win.option_add("*Dialog.msg.wrapLength", "6i")
+        messagebox.showerror("ERROR", "\n" + error_message)
+        err_win.destroy()
+
+# ------------------
+# Class Info Window.
+# ------------------
+class InfWin():
+    '''Inf win class.'''
+    def __init__(self, info_message):
+        inf_win = tk.Tk()
+        inf_win.option_add('*Dialog.msg.font', 'Helvetica 12 bold')
+        #inf_win.option_add('*Dialog.msg.width', 20)
+        inf_win.option_add("*Dialog.msg.wrapLength", "6i")
+        inf_win.overrideredirect(1)
+        inf_win.withdraw()
+        messagebox.showinfo("INFO", info_message)
+        inf_win.destroy()
+
+# ----------------------
+# Function Error Window.
+# ----------------------
+def error(message, title="ERROR"):
+    '''Error function.'''
+    root = tk.Tk()
+    root.overrideredirect(1)
+    root.withdraw()
+    messagebox.showerror(title, message)
+    root.destroy()
+
+# ---------------------
+# Function Info Window.
+# ---------------------
+def info(message, title="ShowInfo"):#
+    '''Info function.'''
+    root = tk.Tk()
+    root.overrideredirect(1)
+    root.withdraw()
+    messagebox.showinfo(title, message)
+    root.destroy()
 
 # ***************************
 # Function get function name.
@@ -280,11 +335,55 @@ def save_png(EPS_PATH, PNG_PATH, width, height, resize_sampler):
     # Return None.
     return pil_image
 
+# --------------------
+# Make image function.
+# --------------------
+def make_image(text, wx=10, hy=256):
+    '''Make a new image.'''
+    # Set rows and cols.
+    n, m = 512, 512
+    # Create an empty image.
+    image = np.zeros([n,m,3], dtype=np.uint8)
+    # Add text to the image
+    position = (wx, hy)
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    font_scale = 1
+    color = (255, 0, 255)
+    thickness = 2
+    cv2.putText(image, text, position, font, font_scale,
+                color, thickness, cv2.LINE_AA)
+    # Return the image.
+    return image
+
+# --------------------
+# Function save_video.
+# --------------------
+def save_videos(frames, video_types):
+    '''Save video function.'''
+    d = datetime.now().strftime("%m%d%Y_%H%M%S_%f")
+    if video_types == "GIF":
+        name_gif = "/ComfyUI_" + str(d) + ".gif"
+        GIF_PATH = ''.join([str(OUTPUT_PATH), name_gif])
+        frames[0].save(GIF_PATH, format='GIF',
+                       append_images=frames[1:],
+                       save_all=True,
+                       duration=200, loop=0)
+    elif video_types == "MP4":
+        name_mp4 = "/ComfyUI_" + str(d) + ".mp4"
+        MP4_PATH = ''.join([str(OUTPUT_PATH), name_mp4])
+        imageio.mimsave(MP4_PATH, frames)
+    # Return None
+    return None
+
 # **********************************
 # Class TurtleGraphicsEpitrochoidDemo
 # **********************************
 class TurtleGraphicsEpitrochoidDemo:
     '''Create a Turtle Graphics rotated pentagram demo.'''
+
+    def __init__(self):
+        '''Class __init__ function.'''
+        self.quit = False
 
     @classmethod
     def IS_CHANGED(cls, *args, **kwargs):
@@ -339,6 +438,11 @@ class TurtleGraphicsEpitrochoidDemo:
     CATEGORY = "🐢 Turtle Graphics"
     OUTPUT_NODE = True
 
+    def quit_loop(self, *args, **kwargs):
+        '''Close windows handler.'''
+        self.quit = True
+        print("You try to interrupt the Turtle Graphics drawing!")
+
     def demo(self, spirograph_thickness, turtle_speed, number_rotations,
             screen_color, fg_color, screen_x, screen_y, fill_on_off,
             fill_color, r_color, R_color, withdraw_window, bg_on_off,
@@ -355,14 +459,18 @@ class TurtleGraphicsEpitrochoidDemo:
         fg_color = create_color_list(fg_color)
         # Set the length of the color list.
         col_len = len(fg_color)
-        # Set the image to None.
+        # Set width and height.
         n,m = 512,512
+        # Set the image to None.
         pil_image = Image.new('RGB', (n, m))
         # Try to draw an image.
         try:
             # Define the turtle screen.
             sc = turtle.Screen()
             sc.setup(screen_x, screen_y)
+            # Reset the screen.
+            turtle.reset()
+            turtle.resetscreen()
             # Clear the screen.
             turtle.clear()
             turtle.clearscreen()
@@ -371,8 +479,17 @@ class TurtleGraphicsEpitrochoidDemo:
             turtle.bgcolor(screen_color)
             # Hide the turtle in general.
             turtle.hideturtle()
-            # Withdraw window.
+            #def quit_running():
+            #    if messagebox.askokcancel("Quit", "Do you want to quit?"):
+            #        self.quit = True
+            #        sleep(0.1)
+            #        root.quit()
+            #root.protocol("WM_DELETE_WINDOW", quit_running)
+            #root.protocol("WM_DELETE_WINDOW", root.update)
+            #root.protocol("WM_DELETE_WINDOW", root.quit)
             root = turtle.getscreen()._root
+            root.bind('<Escape>', self.quit_loop)
+            # Withdraw window.
             if withdraw_window:
                 root.withdraw()
             else:
@@ -422,6 +539,8 @@ class TurtleGraphicsEpitrochoidDemo:
                 tsPen.fillcolor(fill_color)
                 tsPen.begin_fill()
             for t in range(0, number_steps):
+                if self.quit:
+                    break
                 if not remove_spirograph:
                     # Draw the fixed circle.
                     ts.clear()
@@ -470,19 +589,9 @@ class TurtleGraphicsEpitrochoidDemo:
             # End fill.
             if fill_on_off:
                 tsPen.end_fill()
+            # Save video.
             if save_video:
-                d = datetime.now().strftime("%m%d%Y_%H%M%S_%f")
-                if video_types == "GIF":
-                    name_gif = "/ComfyUI_" + str(d) + ".gif"
-                    GIF_PATH = ''.join([str(OUTPUT_PATH), name_gif])
-                    frames[0].save(GIF_PATH, format='GIF',
-                        append_images=frames[1:],
-                        save_all=True,
-                        duration=200, loop=0)
-                elif video_types == "MP4":
-                    name_mp4 = "/ComfyUI_" + str(d) + ".mp4"
-                    MP4_PATH = ''.join([str(OUTPUT_PATH), name_mp4])
-                    imageio.mimsave(MP4_PATH, frames)
+                save_videos(frames, video_types)
             # Get date and time.
             d = datetime.now().strftime("%m%d%Y_%H%M%S_%f")
             # Set the file names.
@@ -499,26 +608,27 @@ class TurtleGraphicsEpitrochoidDemo:
             if withdraw_window:
                 root.quit()
             else:
-                turtle.exitonclick()
-                # Catch errors while closing window.
-                try:
-                    #turtle.bye()
-                    #turtle.done()
-                    turtle.mainloop()
-                except Exception as err:
-                    err_str = "INNER ERROR:"
-                    if str(err) != "":
-                        print(err_str, func + "->", str(err))
-                    else:
-                        print(err_str, func, "->", "empty")
+                self.quit = False
+                turtle.Screen().exitonclick()
+                turtle.Screen().bye()
+                # turtle.mainloop()
+                # turtle.done()
         except RuntimeError as err:
             # Print the error message.
             err_str = "RuntimeError ERROR in function:"
             print(err_str, func, "->", str(err))
+            # print(traceback.format_exc())
         except tk.TclError as err:
             # Print the error message.
             err_str = "tkinter.TclError ERROR in function:"
             print(err_str, func, "->", str(err))
+            # Print the error message.
+            # err_msg = "Oops, Error!"
+            # ErrWin(err_msg)
+            # Create an image.
+            img_txt = "Oops, something went wrong!"
+            pil_image = make_image(img_txt, 25, 256)
+            # print(traceback.format_exc())
         except turtle.Terminator as err:
             # Print the error message.
             err_str = "turtle.Terminator ERROR in function:"
@@ -526,19 +636,33 @@ class TurtleGraphicsEpitrochoidDemo:
                 print(err_str, func + "->", str(err))
             else:
                 print(err_str, func, "->", "empty")
+            # Get the screen.
+            root = turtle.getscreen()._root
+            root.iconify()
+            root.withdraw()
+            # inf_msg = "Press Queue!"
+            # InfWin(inf_msg)
+            # Create an image.
+            img_txt = "Press Queue for restart!"
+            pil_image = make_image(img_txt, 55, 256)
+            # print(traceback.format_exc())
         except Exception as err:
             # Print the error message.
             print("ERROR:", str(err))
         # Try to remove the background.
         try:
+            # Set name and path.
             name_trans = "/ComfyUI_" + str(d) + "_trans.png"
             TRANS_PATH = ''.join([str(OUTPUT_PATH), name_trans])
+            # Remove background.
             if remove_background:
                 pil_image = replace_color(pil_image, bg_color, "black")
                 pil_image = remove_color(pil_image)
+                # Create a Numpy array and save the image.
                 imgNEW = Image.fromarray(pil_image)
                 imgNEW.save(TRANS_PATH)
         except Exception as err:
+            # Print error message.
             print("ERROR:", str(err))
         # Return the opencv image.
         return pil_image
