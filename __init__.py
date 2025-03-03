@@ -4,7 +4,7 @@ from .nodes.rotated_pentagram import *
 from .nodes.rotated_nstar import *
 from .nodes.sierpinski_curve import *
 from .nodes.rotated_ellipse import *
-from .nodes.spirograph import *
+from .nodes.hypotrochoid import *
 from .nodes.epitrochoid import *
 
 # Define the node class mappings.
@@ -18,7 +18,7 @@ NODE_CLASS_MAPPINGS = {
     "🪲 Turtle Graphics Rotated Nstar Demo": TurtleGraphicsRotatedNstarDemo,
     "🪲 Turtle Graphics Sierpinski Curve": TurtleGraphicsSierpinskiCurveDemo,
     "🪲 Turtle Graphics Rotated Ellipse": TurtleGraphicsRotatedEllipseDemo,
-    "🪲 Turtle Graphics Spirograph": TurtleGraphicsSpirographDemo,
+    "🪲 Turtle Graphics Hypotrochoid": TurtleGraphicsHypotrochoidDemo,
     "🪲 Turtle Graphics Epitrochoid": TurtleGraphicsEpitrochoidDemo,
     }
 
