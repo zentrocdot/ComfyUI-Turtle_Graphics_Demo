@@ -21,6 +21,7 @@
 # pylint: disable=global-statement
 
 # Import the standard Python modules.
+#from tkinter import ttk
 import tkinter as tk
 import turtle
 from math import cos, sin
@@ -46,6 +47,8 @@ import imageio
 # Set some paths.
 SCRIPT_PATH = pathlib.Path(__file__).parent.resolve()
 PARENT_PATH = SCRIPT_PATH.parent.absolute()
+IMAGE_PATH = ''.join([str(PARENT_PATH), "/images"])
+SPLASH_PATH = ''.join([str(PARENT_PATH), "/images/splash2.gif"])
 CUSTOM_NODES_PATH = pathlib.Path(PARENT_PATH).parent.resolve()
 COMFYUI_PATH = pathlib.Path(CUSTOM_NODES_PATH).parent.resolve()
 OUTPUT_PATH = ''.join([str(COMFYUI_PATH), "/output"])
@@ -393,7 +396,11 @@ class TurtleGraphicsEpitrochoidDemo:
         self.quit = False
         self.sc = turtle.Screen()
         self.sc.setup(self.screen_x, self.screen_y)
+        self.sc.bgpic(SPLASH_PATH)
+        self.sc.title("Splash Screen Turtle Graphics")
         self.root = turtle.getscreen()._root
+        #self.style = ttk.Style(self.root)
+        #self.style.configure("classic")
         self.root.option_add('*Dialog.msg.font', 'Helvetica 12 bold')
         self.root.option_add('*Dialog.msg.width', 32)
         self.root.option_add("*Dialog.msg.wrapLength", "6i")
@@ -617,15 +624,15 @@ class TurtleGraphicsEpitrochoidDemo:
                 x1, y1 = int(self.screen_x/2)-pad, int(self.screen_y/2)-pad
                 rect = tkwin.create_rectangle(x0, y0, x1, y1,
                            width=0, outline=bg_color, fill=bg_color)
-            # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-            # Start Spirograph                                           +
-            frames = self.spirograph(ts, tsPen, R, r, d, fill_on_off,
-                         start_delay, R_color, r_color, number_rotations,
-                         theta, fill_color, remove_spirograph, point_size,
-                         colorful_on_off, fg_color, col_len, turtle_speed,
-                         save_video, Kth)
-            # End Spirograph                                             +
-            # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            # -> Start Spirograph                                           #+
+            frames = self.spirograph(ts, tsPen, R, r, d, fill_on_off,       #+
+                         start_delay, R_color, r_color, number_rotations,   #+
+                         theta, fill_color, remove_spirograph, point_size,  #+
+                         colorful_on_off, fg_color, col_len, turtle_speed,  #+
+                         save_video, Kth)                                   #+
+            # <- End Spirograph                                             #+
+            # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             # Save video.
             if save_video:
                 save_videos(frames, video_types)
@@ -721,7 +728,7 @@ class TurtleGraphicsEpitrochoidDemo:
         '''Main node function. Create a Turtle Graphics demo.'''
         # Get the name of this function.
         func = get_function_name(self.turtle_graphics_main)
-        # Setup of the turtle screen.
+        # Setup of the turtle screen based on the ComfyUI settings.
         self.screen_x = screen_x
         self.screen_y = screen_y
         # Run the spirograph demo.
